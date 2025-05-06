@@ -10,7 +10,10 @@
 </head>
 <body>
   <section class="hero">
-    <h1>ROOT ACCESS</h1>
+    <div class="logo-container">
+      <div class="terminal-prompt"></div>
+      <div class="logo-text" id="logoText"></div><span id="logo-cursor"></span>
+    </div>
     <p id="tagline"></p>
     <div class="cta">
       <button onclick="document.getElementById('software').scrollIntoView({ behavior: 'smooth' });">View Our Software</button>
@@ -176,6 +179,15 @@
       </div>
     </div>
   </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2025 Root Access. All rights reserved.</p>
+        <p>Built with cyberpunk vibes and cutting-edge tech</p>
+      </div>
+    </div>
+  </footer>
 
   <div class="floating-chat-button">
     <button id="floatingChatButton">

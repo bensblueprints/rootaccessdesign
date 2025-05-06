@@ -7,10 +7,11 @@ body {
   color: #0ff;
   overflow-x: hidden;
   line-height: 1.6;
+  padding-top: 0;
 }
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,6 +20,8 @@ body {
   background: linear-gradient(to bottom, #0a0a0a, #121212);
   position: relative;
   overflow: hidden;
+  padding: 2rem 0;
+  gap: 1.5rem;
 }
 
 .hero::before {
@@ -265,7 +268,7 @@ body {
 
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   
   .hero p {
@@ -274,11 +277,62 @@ body {
   }
   
   .section {
-    padding: 4rem 1.5rem;
+    padding: 4rem 1rem;
   }
   
   .card-grid {
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .logo-text {
+    font-size: 3.5rem;
+    height: 4rem;
+    min-width: 300px;
+  }
+
+  .terminal-prompt {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .terminal-prompt::before {
+    font-size: 60px;
+  }
+  
+  .terminal-prompt::after {
+    font-size: 70px;
+    margin-left: 44px;
+  }
+  
+  .nav-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 2.8rem;
+    height: 3.5rem;
+    min-width: 260px;
+  }
+
+  .terminal-prompt {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .terminal-prompt::before {
+    font-size: 48px;
+  }
+  
+  .terminal-prompt::after {
+    font-size: 56px;
+    margin-left: 36px;
+  }
+  
+  .cta button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -618,21 +672,188 @@ body {
   }
 }
 
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.terminal-prompt {
+  width: 144px;
+  height: 144px;
+  border: 3px solid #ffffff;
+  border-radius: 8px;
+  margin-right: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards 0.5s;
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.3);
+  border-bottom: 6px solid #00ff99;
+}
+
+.terminal-prompt::before {
+  content: ">";
+  color: #ffffff;
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 1;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.terminal-prompt::after {
+  content: "_";
+  position: absolute;
+  color: #ffffff;
+  font-size: 96px;
+  animation: blink 1s step-end infinite;
+  margin-left: 64px;
+  margin-bottom: 8px;
+}
+
+.logo-text {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #e6e6e6;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+  height: 5.5rem;
+  width: auto;
+  min-width: 400px;
+  position: relative;
+  overflow: visible;
+  padding: 0 10px;
+}
+
+.logo-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background-color: #e6e6e6;
+  animation: cursor-blink 0.8s step-end infinite;
+  display: none;
+}
+
+/* Add a blinking cursor that follows the text */
+#logo-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 4.5rem;
+  background-color: #e6e6e6;
+  margin-left: 5px;
+  vertical-align: bottom;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 3.5rem;
+  .site-footer {
+    padding: 2rem 1rem;
   }
-  
-  .hero p {
-    font-size: 1rem;
-    padding: 0 1rem;
+  #logo-cursor {
+    height: 3.5rem;
   }
-  
-  .section {
-    padding: 4rem 1.5rem;
+}
+
+@media (max-width: 480px) {
+  #logo-cursor {
+    height: 2.8rem;
   }
-  
-  .card-grid {
-    gap: 1.5rem;
+}
+
+/* Animation for the cursor blink */
+@keyframes cursor-blink {
+  from, to { background-color: transparent; }
+  50% { background-color: #e6e6e6; }
+}
+
+/* Animation for the terminal prompt blink */
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Animation for fading in elements */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Animation for the glow effect */
+@keyframes glow {
+  0% { 
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3),
+                 0 0 10px rgba(0, 255, 255, 0.3);
+    color: #e6e6e6;
+  }
+  50% { 
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5),
+                 0 0 20px rgba(0, 255, 255, 0.5),
+                 0 0 30px rgba(0, 255, 255, 0.3),
+                 0 0 40px rgba(0, 255, 255, 0.3);
+    color: #00ff99;
+  }
+  100% { 
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3),
+                 0 0 10px rgba(0, 255, 255, 0.3);
+    color: #e6e6e6;
+  }
+}
+
+/* Class that will be added after typing is done */
+.logo-text.glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Navigation styles */
+
+/* Remove hero-logo styles as we're not using them anymore */
+.hero-logo {
+  display: none;
+}
+
+/* Footer styles */
+.site-footer {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(0, 255, 153, 0.3);
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.footer-info {
+  text-align: center;
+  color: #aaa;
+}
+
+.footer-info p {
+  margin: 0.5rem 0;
+}
+
+/* Adjust hero height without nav padding */
+.hero {
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 2rem 1rem;
   }
 }

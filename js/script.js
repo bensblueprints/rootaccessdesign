@@ -1,18 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const text = "We don't just build software. We launch revolutions. From AI to energy drinks, it's all code to us.";
-  let index = 0;
-  const speed = 40;
-  const tagline = document.getElementById("tagline");
-
-  function typeWriter() {
-    if (index < text.length) {
-      tagline.innerHTML += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, speed);
+  // Logo typewriter effect in the hero section
+  const logoText = document.getElementById("logoText");
+  const logoCursor = document.getElementById("logo-cursor");
+  const rootAccessText = "ROOT ACCESS";
+  let logoIndex = 0;
+  const logoSpeed = 120; // Speed for logo typing (slower than tagline)
+  
+  // Initially show the cursor
+  logoCursor.style.display = "inline-block";
+  
+  function typeLogo() {
+    if (logoIndex < rootAccessText.length) {
+      logoText.innerHTML += rootAccessText.charAt(logoIndex);
+      logoIndex++;
+      setTimeout(typeLogo, logoSpeed);
+    } else {
+      // Typing complete, add glow effect
+      setTimeout(() => {
+        logoText.classList.add("glow");
+        // Keep the cursor visible
+        logoCursor.style.display = "inline-block";
+      }, 500);
     }
   }
 
-  typeWriter();
+  // Start logo typing with a shorter delay since it's in the hero
+  setTimeout(typeLogo, 800);
+  
+  // Tagline typewriter effect
+  const taglineText = "We don't just build software. We launch revolutions. From AI to energy drinks, it's all code to us.";
+  let taglineIndex = 0;
+  const taglineSpeed = 40;
+  const tagline = document.getElementById("tagline");
+
+  function typeTagline() {
+    if (taglineIndex < taglineText.length) {
+      tagline.innerHTML += taglineText.charAt(taglineIndex);
+      taglineIndex++;
+      setTimeout(typeTagline, taglineSpeed);
+    }
+  }
+
+  // Start tagline typing after logo is complete
+  setTimeout(typeTagline, 800 + (rootAccessText.length * logoSpeed) + 500);
 
   // Audio player functionality
   const audioPlayers = document.querySelectorAll('.audio-player');
