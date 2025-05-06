@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discord Webhook Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #1a1a1a;
+      color: #eee;
+    }
+    h1 {
+      color: #00ff99;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #0ff;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #333;
+      border: 1px solid #555;
+      color: #eee;
+    }
+    button {
+      background-color: #0ff;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .test-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .test-buttons button {
+      flex: 1;
+    }
+    #response {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #555;
+      border-radius: 4px;
+      background-color: #222;
+      min-height: 100px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .success {
+      color: #00ff99;
+    }
+    .error {
+      color: #ff3366;
+    }
+    .info {
+      color: #0ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Discord Webhook</h1>
+  
+  <div class="form-group">
+    <label for="username">Name:</label>
+    <input type="text" id="username" placeholder="Your name" value="Test User">
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Message:</label>
+    <textarea id="message" rows="4" placeholder="Your message">Testing webhook from Root Access site</textarea>
+  </div>
+  
+  <div class="test-buttons">
+    <button id="directBtn">Send Direct (Node.js tested)</button>
+    <button id="proxyBtn">Send via Netlify Proxy (Browser-safe)</button>
+  </div>
+  
+  <div id="response">
+    <p class="info">Response will appear here...</p>
+    <p class="info">Two options:</p>
+    <p class="info">1. "Direct" - Uses the Discord webhook directly (works in Node.js but may fail in browser)</p>
+    <p class="info">2. "Proxy" - Uses the Netlify proxy (should work in browser without CORS issues)</p>
+  </div>
+  
+  <script>
+    // Discord webhook URLs
+    const directWebhookUrl = 'https://discordapp.com/api/webhooks/1369376321377013834/ptcUivXiiYSDRLIrqQuBnn1ctBC-o88lwsBxHJ_O7HpLLlnoK3w8ZQ3mLY-Yuq5JvvLV';
+    const proxyWebhookUrl = '/api/discord-webhook';
+    
+    // Direct webhook button
+    document.getElementById('directBtn').addEventListener('click', async function() {
+      sendMessage(directWebhookUrl);
+    });
+    
+    // Proxy webhook button
+    document.getElementById('proxyBtn').addEventListener('click', async function() {
+      sendMessage(proxyWebhookUrl);
+    });
+    
+    async function sendMessage(webhookUrl) {
+      const username = document.getElementById('username').value.trim() || 'Test User';
+      const message = document.getElementById('message').value.trim() || 'Test message';
+      const responseEl = document.getElementById('response');
+      
+      responseEl.innerHTML = `<p class="info">Sending message via ${webhookUrl.includes('api/discord') ? 'Netlify Proxy' : 'Direct Discord Webhook'}...</p>`;
+      
+      // Create simple payload
+      const payload = {
+        username: `${username} (Test)`,
+        content: message
+      };
+      
+      try {
+        responseEl.innerHTML += `<p>Payload: ${JSON.stringify(payload, null, 2)}</p>`;
+        
+        // Send the message
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+        
+        responseEl.innerHTML += `<p>Response status: ${response.status} ${response.statusText}</p>`;
+        
+        if (response.status === 204 || response.status === 200) {
+          responseEl.innerHTML += `<p class="success">Success! Message sent to Discord.</p>`;
+          return;
+        }
+        
+        const responseText = await response.text();
+        if (responseText) {
+          responseEl.innerHTML += `<p>Response body: ${responseText}</p>`;
+        }
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error ${response.status}: ${responseText || response.statusText}`);
+        }
+        
+      } catch (error) {
+        console.error('Error:', error);
+        responseEl.innerHTML += `<p class="error">Error: ${error.message}</p>`;
+        
+        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+          responseEl.innerHTML += `
+            <p class="error">This looks like a CORS or network error.</p>
+            <p>If you're using the direct webhook and seeing CORS errors, try the Netlify proxy option instead.</p>
+          `;
+        }
+      }
+    }
+  </script>
+</body>
+</html> 

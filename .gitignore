@@ -29,3 +29,5 @@ desktop.ini
 # Build directories
 dist/
 build/ 
+# Local Netlify folder
+.netlify

@@ -123,8 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatMessages = document.getElementById('chatMessages');
   const floatingChatButton = document.getElementById('floatingChatButton');
 
-  // Discord webhook URL - you'll need to replace this with your actual webhook URL
-  const DISCORD_WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL';
+  // Discord webhook URL - Use Netlify proxy to avoid CORS issues
+  // This will be redirected via netlify.toml to the actual Discord webhook
+  const DISCORD_WEBHOOK_URL = '/api/discord-webhook';
 
   // Handle the floating chat button
   if (floatingChatButton) {
@@ -216,27 +217,70 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to send message to Discord webhook
   async function sendToDiscord(name, message) {
     try {
-      // Call our proxy server instead of directly calling Discord
-      const response = await fetch('http://localhost:3000/api/send-to-discord', {
+      // Using the Netlify proxy to avoid CORS issues
+      // NOTE: This is more secure than exposing the webhook URL in client-side code
+      console.log('Sending message to Discord:', { name, message });
+      
+      const payload = {
+        username: `${name} (via website)`,
+        content: message,
+        // You can also use embeds for richer messages
+        embeds: [{
+          title: 'Message from Website',
+          description: message,
+          color: 65535, // Cyan color in decimal
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: 'Root Access Website Chat'
+          },
+          author: {
+            name: name
+          }
+        }]
+      };
+      
+      console.log('Request payload:', JSON.stringify(payload));
+      
+      const response = await fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name,
-          message
-        }),
+        body: JSON.stringify(payload),
       });
       
+      console.log('Response status:', response.status, response.statusText);
+      
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to send message');
+        const errorData = await response.text();
+        console.error('Discord API error details:', errorData);
+        
+        // Add error message to UI with more details
+        const errorElement = document.createElement('div');
+        errorElement.className = 'chat-message system';
+        errorElement.innerHTML = `
+          <span class="message-content">Error (${response.status}): ${response.statusText}. Please try again or contact us directly.</span>
+        `;
+        chatMessages.appendChild(errorElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        throw new Error(`Failed to send message to Discord: ${response.status} ${response.statusText}`);
       }
       
-      return await response.json();
+      return { success: true };
       
     } catch (error) {
-      console.error('Error sending to Discord:', error);
+      console.error('Error sending to Discord:', error.message);
+      
+      // Show the specific error in the UI
+      const errorElement = document.createElement('div');
+      errorElement.className = 'chat-message system';
+      errorElement.innerHTML = `
+        <span class="message-content">Error: ${error.message}. Please try again later or contact us directly at contact@rootaccess.design</span>
+      `;
+      chatMessages.appendChild(errorElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      
       throw error;
     }
   }

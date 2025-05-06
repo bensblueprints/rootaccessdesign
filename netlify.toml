@@ -11,6 +11,14 @@
   to = "/index.html"
   status = 200
 
+# Proxy for Discord webhook to avoid CORS issues
+[[redirects]]
+  from = "/api/discord-webhook"
+  to = "https://discordapp.com/api/webhooks/1369376321377013834/ptcUivXiiYSDRLIrqQuBnn1ctBC-o88lwsBxHJ_O7HpLLlnoK3w8ZQ3mLY-Yuq5JvvLV"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
 # HTTP headers for security
 [[headers]]
   for = "/*"
@@ -19,4 +27,4 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
-    Content-Security-Policy = "default-src 'self' https://cdn.shopify.com https://cdnjs.cloudflare.com; connect-src 'self' https://*.netlify.app; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; media-src 'self' https://cdn.shopify.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;" 
+    Content-Security-Policy = "default-src 'self' https://cdn.shopify.com https://cdnjs.cloudflare.com; connect-src 'self' https://*.netlify.app https://discordapp.com; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; media-src 'self' https://cdn.shopify.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;" 
