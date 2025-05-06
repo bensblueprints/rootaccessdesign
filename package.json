@@ -1,0 +1,20 @@
+{
+  "name": "root-access-discord-proxy",
+  "version": "1.0.0",
+  "description": "Proxy server to connect Root Access website with Discord",
+  "main": "discord-proxy.js",
+  "scripts": {
+    "start": "node discord-proxy.js",
+    "dev": "nodemon discord-proxy.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^2.6.7",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+} 
