@@ -190,6 +190,138 @@
     </div>
   </section>
 
+  <section id="pricing-calculator" class="section calculator-section">
+    <h2>&lt;MVP Cost Calculator /&gt;</h2>
+    <p class="section-tagline">Calculate the cost of your next software project with our interactive pricing tool.</p>
+    
+    <div class="calculator-container">
+      <div class="calculator-inputs">
+        <div class="form-group">
+          <label>Project Complexity <span class="value-display" id="complexityValue">Medium</span></label>
+          <input type="range" min="1" max="5" value="3" class="slider" id="complexity">
+          <div class="slider-labels">
+            <span>Simple</span>
+            <span>Complex</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Features <span class="value-display" id="featuresValue">5</span></label>
+          <input type="range" min="1" max="10" value="5" class="slider" id="features">
+          <div class="slider-labels">
+            <span>Minimal</span>
+            <span>Full Suite</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Development Speed <span class="value-display" id="speedValue">Normal</span></label>
+          <input type="range" min="1" max="3" value="2" class="slider" id="speed">
+          <div class="slider-labels">
+            <span>Standard</span>
+            <span>Urgent</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Platform Type</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="platform" value="web" checked>
+              <span class="radio-label">Basic Website</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="custom_basic">
+              <span class="radio-label">Custom Website</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="custom_high">
+              <span class="radio-label">High-End Custom Website</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="ecommerce_basic">
+              <span class="radio-label">Basic E-commerce</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="ecommerce_advanced">
+              <span class="radio-label">Advanced E-commerce</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="webapp_small">
+              <span class="radio-label">Small/Medium Web App</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="webapp_large">
+              <span class="radio-label">Large Custom Web App</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="mobile">
+              <span class="radio-label">Mobile App</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="desktop">
+              <span class="radio-label">Desktop App</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="pwa_basic">
+              <span class="radio-label">Basic PWA</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="platform" value="pwa_advanced">
+              <span class="radio-label">Advanced PWA</span>
+            </label>
+          </div>
+          <p class="platform-note">We code everything from scratch — no CMS systems to get hacked.</p>
+        </div>
+      </div>
+      
+      <div class="calculator-results">
+        <h3>Estimated Project Details</h3>
+        
+        <div class="price-display">
+          <div class="price-range">
+            <span id="minPrice">$4,500</span>
+            <span id="maxPrice">$6,500</span>
+          </div>
+          <div class="price-slider-container">
+            <div class="price-slider-track"></div>
+            <div class="price-slider-fill" id="priceSliderFill"></div>
+            <div class="price-slider-thumb" id="priceSliderThumb"></div>
+          </div>
+        </div>
+        
+        <div class="timeframe">
+          <h4>Estimated Timeline</h4>
+          <div class="timeframe-display">
+            <div class="timeframe-comparison">
+              <div class="timeframe-bar traditional">
+                <span class="timeframe-label">Traditional</span>
+                <span class="timeframe-value" id="traditionalTime">8-12 weeks</span>
+              </div>
+              <div class="timeframe-bar rootaccess">
+                <span class="timeframe-label">Root Access</span>
+                <span class="timeframe-value" id="rootaccessTime">3-5 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-details">
+          <div class="detail-item">
+            <span class="detail-label">Features included:</span>
+            <span class="detail-value" id="featuresIncluded">User auth, API integration, Dashboard, Admin panel, Database</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Recommended approach:</span>
+            <span class="detail-value" id="recommendedApproach">AI-Accelerated MVP</span>
+          </div>
+        </div>
+        
+        <button class="cta-button" onclick="window.location.href='mailto:contact@rootaccess.design'">Get Detailed Quote</button>
+      </div>
+    </div>
+  </section>
+
   <section id="discord-chat" class="section chat-section">
     <h2>&lt;Join Our Community /&gt;</h2>
     <div class="chat-container">

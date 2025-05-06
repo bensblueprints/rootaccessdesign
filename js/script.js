@@ -44,6 +44,207 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start tagline typing after logo is complete
   setTimeout(typeTagline, 800 + (rootAccessText.length * logoSpeed) + 500);
 
+  // Pricing Calculator Functionality
+  const complexitySlider = document.getElementById("complexity");
+  const featuresSlider = document.getElementById("features");
+  const speedSlider = document.getElementById("speed");
+  const complexityValue = document.getElementById("complexityValue");
+  const featuresValue = document.getElementById("featuresValue");
+  const speedValue = document.getElementById("speedValue");
+  const minPrice = document.getElementById("minPrice");
+  const maxPrice = document.getElementById("maxPrice");
+  const priceSliderFill = document.getElementById("priceSliderFill");
+  const priceSliderThumb = document.getElementById("priceSliderThumb");
+  const traditionalTime = document.getElementById("traditionalTime");
+  const rootaccessTime = document.getElementById("rootaccessTime");
+  const featuresIncluded = document.getElementById("featuresIncluded");
+  const recommendedApproach = document.getElementById("recommendedApproach");
+  const platformOptions = document.querySelectorAll('input[name="platform"]');
+  
+  // Pricing constants (adjusted for wider scale)
+  const BASE_PRICE_MIN = 500; // Starting at $500
+  const BASE_PRICE_MAX = 500000; // Up to $500,000
+  
+  // Define weightings for each category (Speed, Features, Complexity)
+  const SPEED_WEIGHT = 0;  // Speed doesn't affect price
+  const FEATURES_WEIGHT = 0.5;  // 50% influence on price
+  const COMPLEXITY_WEIGHT = 0.5;  // 50% influence on price
+  
+  // Normalize input to scale between 0 and 1
+  const normalizeInput = (input, max) => {
+    return input / max;
+  };
+  
+  // Platform multiplier still applied after base calculation
+  const PLATFORM_MULTIPLIER = {
+    web: 1.0,  // Basic website - baseline
+    mobile: 1.6,  // Mobile app
+    desktop: 1.4,  // Desktop app
+    ecommerce_basic: 0.8,  // Basic E-commerce (Shopify/WooCommerce): $10,000 - $30,000
+    ecommerce_advanced: 1.8,  // Advanced E-commerce (Custom Build): $30,000 - $100,000
+    webapp_small: 1.6,  // Small to Medium Web App: $25,000 - $100,000
+    webapp_large: 3.0,  // Large Custom Web App: $100,000 - $500,000+
+    custom_basic: 1.2,  // Custom Website (Basic): $15,000 - $50,000
+    custom_high: 2.0,  // High-End Custom Website: $50,000 - $250,000
+    pwa_basic: 1.4,  // Basic PWA: $20,000 - $50,000
+    pwa_advanced: 2.0   // Advanced PWA: $50,000 - $150,000
+  };
+  
+  // Project tiers based on price ranges and new platform types
+  const PROJECT_TIERS = [
+    { name: "Basic Website", max: 15000 },
+    { name: "Basic E-commerce", max: 30000 },
+    { name: "Custom Website (Basic)", max: 50000 },
+    { name: "Small to Medium Web App", max: 100000 },
+    { name: "Advanced E-commerce", max: 100000 },
+    { name: "Advanced PWA", max: 150000 },
+    { name: "High-End Custom Website", max: 250000 },
+    { name: "Large Custom Web App", max: 500000 }
+  ];
+  
+  // Feature sets based on feature count
+  const FEATURE_SETS = [
+    "User authentication",
+    "User authentication, Basic dashboard",
+    "User authentication, Basic dashboard, Simple database",
+    "User authentication, Dashboard, Database, API integration",
+    "User authentication, Dashboard, Database, API integration, Admin panel",
+    "User authentication, Dashboard, Database, API integration, Admin panel, Reports",
+    "User authentication, Dashboard, Database, API integration, Admin panel, Reports, Search functionality",
+    "User authentication, Dashboard, Database, API integration, Admin panel, Reports, Search functionality, File uploads",
+    "User authentication, Dashboard, Database, API integration, Admin panel, Reports, Search functionality, File uploads, Notifications",
+    "User authentication, Dashboard, Database, API integration, Admin panel, Reports, Search functionality, File uploads, Notifications, Payment processing"
+  ];
+  
+  // Complexity labels
+  const COMPLEXITY_LABELS = ["Very Simple", "Simple", "Medium", "Complex", "Very Complex"];
+  
+  // Speed labels
+  const SPEED_LABELS = ["Standard", "Normal", "Urgent"];
+  
+  // Timeframe estimates based on complexity and speed
+  const TIMEFRAME_TRADITIONAL = [
+    ["4-6 weeks", "6-8 weeks", "8-12 weeks", "12-16 weeks", "16-24 weeks"],
+    ["3-5 weeks", "5-7 weeks", "7-10 weeks", "10-14 weeks", "14-20 weeks"],
+    ["2-4 weeks", "4-6 weeks", "6-8 weeks", "8-12 weeks", "12-18 weeks"]
+  ];
+  
+  const TIMEFRAME_ROOTACCESS = [
+    ["2-3 weeks", "3-4 weeks", "4-6 weeks", "6-8 weeks", "8-12 weeks"],
+    ["2 weeks", "2-3 weeks", "3-5 weeks", "5-7 weeks", "7-10 weeks"],
+    ["2 weeks", "2-3 weeks", "3-4 weeks", "4-6 weeks", "6-8 weeks"]
+  ];
+  
+  // Recommendation approaches based on complexity and features
+  const APPROACHES = [
+    "Quick MVP",
+    "AI-Accelerated MVP",
+    "Premium MVP",
+    "Custom Development",
+    "Enterprise Solution"
+  ];
+  
+  // Define the Base Prices and Price Ranges for each platform type
+  const platformPrices = {
+    basicWebsite: { basePrice: 500, priceRange: 4500 },
+    customWebsite: { basePrice: 1500, priceRange: 8500 },
+    highEndCustom: { basePrice: 5000, priceRange: 20000 },
+    basicEcommerce: { basePrice: 2500, priceRange: 12500 },
+    advancedEcommerce: { basePrice: 5000, priceRange: 20000 },
+    smallMediumWebApp: { basePrice: 5000, priceRange: 25000 },
+    largeCustomWebApp: { basePrice: 7500, priceRange: 42500 },
+    mobileApp: { basePrice: 6000, priceRange: 34000 },
+    desktopApp: { basePrice: 7500, priceRange: 42500 },
+    basicPWA: { basePrice: 3000, priceRange: 12000 },
+    advancedPWA: { basePrice: 6000, priceRange: 24000 }
+  };
+
+  // Update calculator values based on inputs
+  function updateCalculator() {
+    // Get current values
+    const complexity = parseInt(complexitySlider.value);
+    const features = parseInt(featuresSlider.value);
+    let platformValue = "basicWebsite";
+    
+    // Get selected platform
+    platformOptions.forEach(option => {
+      if (option.checked) {
+        platformValue = option.value;
+      }
+    });
+    
+    // Update display values
+    complexityValue.textContent = COMPLEXITY_LABELS[complexity - 1];
+    featuresValue.textContent = features;
+    
+    // Calculate price using the previous algorithm
+    // Normalize the inputs
+    const featuresNormalized = normalizeInput(features, 10); // Features goes from 1-10
+    const complexityNormalized = normalizeInput(complexity, 5); // Complexity goes from 1-5
+    
+    // Calculate weighted score (without speed)
+    const weightedScore = (featuresNormalized * FEATURES_WEIGHT) +
+                        (complexityNormalized * COMPLEXITY_WEIGHT);
+    
+    // Calculate base price based on the weighted score
+    const priceRange = BASE_PRICE_MAX - BASE_PRICE_MIN;
+    let basePrice = BASE_PRICE_MIN + (priceRange * weightedScore);
+    
+    // Apply platform multiplier
+    const platformMultiplier = PLATFORM_MULTIPLIER[platformValue];
+    const adjustedEstimate = basePrice * platformMultiplier;
+    
+    // Cap at maximum price and round to nearest thousand
+    const cappedEstimate = Math.min(BASE_PRICE_MAX, Math.round(adjustedEstimate / 1000) * 1000);
+    
+    // Create a price range around the estimate
+    const minEstimate = Math.round(cappedEstimate * 0.9 / 1000) * 1000;
+    const maxEstimate = Math.min(BASE_PRICE_MAX, Math.round(cappedEstimate * 1.1 / 1000) * 1000);
+    
+    // Update price display with proper formatting
+    minPrice.textContent = "$" + minEstimate.toLocaleString();
+    maxPrice.textContent = "$" + maxEstimate.toLocaleString();
+    
+    // Calculate the logarithmic position on the price slider (for better visualization)
+    // Using logarithmic scale for the slider to better visualize the wide price range
+    const minLog = Math.log(BASE_PRICE_MIN);
+    const maxLog = Math.log(BASE_PRICE_MAX);
+    const priceLog = Math.log(cappedEstimate);
+    
+    // Convert to percentage position (0-100%)
+    const fillPercent = ((priceLog - minLog) / (maxLog - minLog)) * 100;
+    
+    // Update slider fill and thumb position
+    priceSliderFill.style.width = `${fillPercent}%`;
+    priceSliderThumb.style.left = `${fillPercent}%`;
+    
+    // Update timeframes
+    traditionalTime.textContent = TIMEFRAME_TRADITIONAL[speed - 1][complexity - 1];
+    rootaccessTime.textContent = TIMEFRAME_ROOTACCESS[speed - 1][complexity - 1];
+    
+    // Update features included
+    featuresIncluded.textContent = FEATURE_SETS[features - 1];
+    
+    // Update recommended approach based on price tier
+    const tier = PROJECT_TIERS.findIndex(tier => cappedEstimate <= tier.max);
+    recommendedApproach.textContent = tier >= 0 ? PROJECT_TIERS[tier].name : PROJECT_TIERS[PROJECT_TIERS.length - 1].name;
+  }
+  
+  // Set up event listeners for calculator inputs
+  if (complexitySlider && featuresSlider && speedSlider) {
+    // Initial calculation
+    updateCalculator();
+    
+    // Listen for changes
+    complexitySlider.addEventListener("input", updateCalculator);
+    featuresSlider.addEventListener("input", updateCalculator);
+    speedSlider.addEventListener("input", updateCalculator);
+    
+    platformOptions.forEach(option => {
+      option.addEventListener("change", updateCalculator);
+    });
+  }
+
   // Audio player functionality
   const audioPlayers = document.querySelectorAll('.audio-player');
   let currentlyPlaying = null;
