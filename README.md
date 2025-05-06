@@ -125,3 +125,11 @@ MIT License
 - Font Awesome for icons
 - JetBrains Mono font
 - Discord for webhook integration 
+
+## Security Notes
+
+⚠️ **Important**: Never commit your Discord webhook URL or any API keys to your repository. Always use environment variables stored in:
+- A local `.env` file (already in `.gitignore`)
+- Your hosting platform's environment variables section (Netlify, Vercel, etc.)
+
+## After every push you will comit to git and netlify
