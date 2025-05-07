@@ -9,7 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3001;
 
 // Your Discord webhook URL (keep this secret!)
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
