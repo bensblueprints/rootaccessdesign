@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Free Access | AI Course Premium Content</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Bridge page specific styles */
+    .bridge-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 120px 0;
+      text-align: center;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .bridge-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .bridge-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      line-height: 1.2;
+    }
+    
+    .bridge-hero p {
+      font-size: 1.2rem;
+      color: #bbb;
+      margin-bottom: 30px;
+    }
+    
+    .email-form {
+      background: rgba(15, 15, 15, 0.8);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .email-form h2 {
+      color: #0ff;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+    
+    .email-form p {
+      color: #bbb;
+      margin-bottom: 25px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 5px;
+      color: white;
+      font-size: 1rem;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: #0ff;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+    
+    .submit-btn {
+      background: #0ff;
+      color: #121212;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .submit-btn:hover {
+      background: #80ffff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    
+    .benefits {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    
+    .benefit-item {
+      background: rgba(15, 15, 15, 0.6);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      border-color: #0ff;
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    }
+    
+    .benefit-icon {
+      color: #0ff;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .benefit-item h3 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .benefit-item p {
+      color: #bbb;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .privacy-note {
+      color: #777;
+      font-size: 0.85rem;
+      margin-top: 15px;
+    }
+    
+    .countdown {
+      margin: 30px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+    
+    .countdown-title {
+      color: #0ff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .countdown-item {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 10px;
+      min-width: 70px;
+    }
+    
+    .countdown-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #0ff;
+    }
+    
+    .countdown-label {
+      font-size: 0.8rem;
+      color: #bbb;
+      text-transform: uppercase;
+    }
+    
+    @media (max-width: 768px) {
+      .bridge-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .countdown-timer {
+        gap: 10px;
+      }
+      
+      .countdown-item {
+        min-width: 60px;
+      }
+      
+      .countdown-number {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <a href="../../index.html">Home</a>
+        <a href="../../index.html#process">Process</a>
+        <a href="../../index.html#software">Software</a>
+        <a href="../../index.html#our-vibe">Our Vibe</a>
+        <a href="../../index.html#pricing-calculator">Pricing</a>
+        <div class="courses-menu-item">
+          <a href="../index.html" class="highlight-nav">Courses</a>
+          <div class="mega-menu">
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">Web Development</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../web-fundamentals/index.html">Web Fundamentals</a></li>
+                <li><a href="../html-css-mastery/index.html">HTML & CSS Mastery</a></li>
+                <li><a href="../javascript-essentials/index.html">JavaScript Essentials</a></li>
+                <li><a href="../intermediate-javascript/index.html">Intermediate JavaScript</a></li>
+                <li><a href="../responsive-web-design/index.html">Responsive Web Design</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">Frontend Frameworks</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../react-fundamentals/index.html">React Fundamentals</a></li>
+                <li><a href="../react-advanced/index.html">Advanced React</a></li>
+                <li><a href="../advanced-react-patterns/index.html">React Design Patterns</a></li>
+                <li><a href="../ui-ux-design-fundamentals/index.html">UI/UX Fundamentals</a></li>
+                <li><a href="../ui-ux-advanced/index.html">Advanced UI/UX Design</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">Backend & API</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../node-backend/index.html">Node.js Backend</a></li>
+                <li><a href="../api-development/index.html">API Development</a></li>
+                <li><a href="../database-design/index.html">Database Design</a></li>
+                <li><a href="../golang-basics/index.html">Go Basics</a></li>
+                <li><a href="../python-fundamentals/index.html">Python Fundamentals</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">AI & Machine Learning</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../ml-basics/index.html">Machine Learning Basics</a></li>
+                <li><a href="../machine-learning-for-devs/index.html">ML for Developers</a></li>
+                <li><a href="../ai-systems-integration/index.html">AI Systems Integration</a></li>
+                <li><a href="../full-stack-ai/index.html">Full-Stack AI</a></li>
+                <li><a href="../cybersecurity-ai/index.html">AI Cybersecurity</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-footer">
+              <a href="../index.html" class="mega-menu-all">View All Courses</a>
+              <a href="../../meet-up.html" class="mega-menu-featured">
+                <i class="fas fa-star"></i>
+                <span class="mega-menu-featured-text">Free Coding Bootcamp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="../../meet-up.html">Free Coding Bootcamp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="bridge-hero">
+    <div class="container">
+      <div class="bridge-content">
+        <h1>Unlock <span style="color:#0ff">Premium AI Course Content</span> For Free</h1>
+        <p>Get insider access to our comprehensive AI development curriculum, exclusive tutorials, and expert tips to accelerate your coding career.</p>
+        
+        <div class="countdown">
+          <h3 class="countdown-title">Limited Time Offer Expires In:</h3>
+          <div class="countdown-timer">
+            <div class="countdown-item">
+              <div class="countdown-number" id="days">2</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="hours">12</div>
+              <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="minutes">45</div>
+              <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="seconds">30</div>
+              <div class="countdown-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="email-form">
+          <h2>Get Instant Access</h2>
+          <p>Enter your email below to receive a free course preview, exclusive resources and special offers.</p>
+          
+          <form id="accessForm" action="sales-page-template.html">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+            </div>
+            <button type="submit" class="submit-btn">Get Free Access Now <i class="fas fa-arrow-right"></i></button>
+          </form>
+          <p class="privacy-note">We respect your privacy. No spam ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="benefits">
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Accelerated Learning</h3>
+        <p>Master AI development concepts in weeks instead of months with our practical, hands-on approach.</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fas fa-code"></i></div>
+        <h3>Real-World Projects</h3>
+        <p>Build portfolio-worthy projects using the latest AI technologies and frameworks.</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fas fa-users"></i></div>
+        <h3>Expert Community</h3>
+        <p>Join our community of developers and get feedback from industry professionals.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2025 Root Access. All rights reserved.</p>
+        <p>Premium AI coding courses and workshops</p>
+        <div style="margin-top: 15px;">
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-github"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-discord"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown timer
+    function updateCountdown() {
+      // Set the date we're counting down to (48 hours from now)
+      const countDownDate = new Date();
+      countDownDate.setHours(countDownDate.getHours() + 48);
+      
+      // Update the countdown every 1 second
+      const x = setInterval(function() {
+        // Get current date and time
+        const now = new Date().getTime();
+        
+        // Find the distance between now and the countdown date
+        const distance = countDownDate - now;
+        
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Display the result
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+        
+        // If the countdown is finished, display expired message
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("days").textContent = "0";
+          document.getElementById("hours").textContent = "0";
+          document.getElementById("minutes").textContent = "0";
+          document.getElementById("seconds").textContent = "0";
+        }
+      }, 1000);
+    }
+    
+    // Start countdown on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCountdown();
+      
+      // Store email in localStorage when form is submitted
+      document.getElementById('accessForm').addEventListener('submit', function(e) {
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        
+        localStorage.setItem('courseUserEmail', email);
+        localStorage.setItem('courseUserName', name);
+      });
+    });
+  </script>
+</body>
+</html> 
