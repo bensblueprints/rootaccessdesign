@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKK TRANSIT - Bangkok Transit System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1 class="main-title">BKK TRANSIT</h1>
+      <p class="subtitle">ROOT.ACCESS.DESIGN</p>
+      <div class="user-profile">
+        <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-img">
+      </div>
+    </header>
+
+    <div class="navigation-menu">
+      <div class="nav-item active" data-target="transit-section">
+        <i class="fas fa-subway"></i>
+        <span>TRANSIT</span>
+      </div>
+      <div class="nav-item" data-target="learn-section">
+        <i class="fas fa-graduation-cap"></i>
+        <span>LEARN THAI</span>
+      </div>
+      <div class="nav-item" data-target="near-section">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>NEAR ME</span>
+      </div>
+    </div>
+
+    <main>
+      <section id="transit-section" class="active-section">
+        <div class="transit-container">
+          <div class="transit-lines">
+            <h2 class="section-title">TRANSIT LINES</h2>
+            <div class="line-list">
+              <div class="line-item" data-line="silom">
+                <span class="line-color silom"></span>
+                <span class="line-name">Silom Line</span>
+              </div>
+              <div class="line-item" data-line="sukhumvit">
+                <span class="line-color sukhumvit"></span>
+                <span class="line-name">Sukhumvit Line</span>
+              </div>
+              <div class="line-item" data-line="gold">
+                <span class="line-color gold"></span>
+                <span class="line-name">Gold Line</span>
+              </div>
+              <div class="line-item" data-line="purple">
+                <span class="line-color purple"></span>
+                <span class="line-name">Purple Line</span>
+              </div>
+              <div class="line-item" data-line="pink">
+                <span class="line-color pink"></span>
+                <span class="line-name">Pink Line</span>
+              </div>
+              <div class="line-item" data-line="yellow">
+                <span class="line-color yellow"></span>
+                <span class="line-name">Yellow Line</span>
+              </div>
+              <div class="line-item" data-line="airport">
+                <span class="line-color airport"></span>
+                <span class="line-name">Airport Rail Link</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="station-details">
+            <div class="station-header">
+              <h2 class="station-name">National Stadium</h2>
+              <div class="line-tag">
+                <span class="silom-badge">Silom Line</span>
+              </div>
+            </div>
+            
+            <div class="status-container">
+              <div class="status-group">
+                <h3 class="status-label">STATUS</h3>
+                <div class="status-value on-time">On Time</div>
+              </div>
+              
+              <div class="next-train">
+                <h3 class="status-label">NEXT</h3>
+                <div class="countdown-timer" id="countdown">5 min</div>
+              </div>
+            </div>
+
+            <div class="coordinates-container">
+              <div class="coordinate-group">
+                <h3 class="coordinate-label">LAT</h3>
+                <div class="coordinate-value" id="lat">13.746316</div>
+              </div>
+              
+              <div class="coordinate-group">
+                <h3 class="coordinate-label">LNG</h3>
+                <div class="coordinate-value" id="lng">100.529415</div>
+              </div>
+            </div>
+
+            <div class="nearby-container">
+              <h3 class="nearby-label">NEARBY</h3>
+              <ul class="nearby-list" id="nearby-places">
+                <li class="nearby-item">MBK Center</li>
+                <li class="nearby-item">Siam Discovery</li>
+              </ul>
+            </div>
+
+            <div class="barcode-container">
+              <div class="barcode"></div>
+              <div class="brand-tag">ROOT.ACCESS.DESIGN</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="learn-section">
+        <div class="learning-container">
+          <h2 class="section-title">LEARN THAI</h2>
+          <div class="phrase-cards">
+            <div class="phrase-card">
+              <h3 class="thai-script">สวัสดี</h3>
+              <p class="pronunciation">sa-wat-dee</p>
+              <p class="translation">Hello</p>
+            </div>
+            <div class="phrase-card">
+              <h3 class="thai-script">ขอบคุณ</h3>
+              <p class="pronunciation">khop-khun</p>
+              <p class="translation">Thank you</p>
+            </div>
+            <div class="phrase-card">
+              <h3 class="thai-script">สถานีรถไฟฟ้า</h3>
+              <p class="pronunciation">sa-ta-nee-rot-fai-fa</p>
+              <p class="translation">BTS Station</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="near-section">
+        <div class="near-container">
+          <h2 class="section-title">NEAR ME</h2>
+          <div class="map-container" id="map">
+            <div class="map-placeholder">
+              <i class="fas fa-map-marked-alt"></i>
+              <p>Loading map...</p>
+            </div>
+          </div>
+          <div class="nearby-stations">
+            <h3>Nearby Stations</h3>
+            <ul id="nearby-stations-list">
+              <!-- This will be populated via JavaScript -->
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="station-select-panel">
+      <h2 class="panel-title">STATION SELECT</h2>
+      <div class="station-search">
+        <input type="text" id="station-search" placeholder="Search stations...">
+      </div>
+      <div class="station-list" id="stations-list">
+        <!-- Will be populated from JavaScript -->
+        <div class="station-item active" data-station="national-stadium">
+          <span class="station-item-name">National Stadium</span>
+          <span class="station-coordinates">13.7463 100.5294</span>
+          <span class="select-indicator"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html> 
