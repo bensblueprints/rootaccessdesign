@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium AI Coding Courses | Root Access</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Course specific styles */
+    .courses-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 100px 0;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .courses-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #bbb;
+      font-size: 1.2rem;
+    }
+    
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .course-card {
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    }
+    
+    .course-image {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .course-card:hover .course-image img {
+      transform: scale(1.1);
+    }
+    
+    .course-level {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .beginner { background-color: #4CAF50; }
+    .intermediate { background-color: #2196F3; }
+    .advanced { background-color: #9C27B0; }
+    .workshop { background-color: #FF9800; }
+    
+    .course-content {
+      padding: 20px;
+    }
+    
+    .course-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    
+    .course-content p {
+      color: #bbb;
+      margin-bottom: 15px;
+      min-height: 60px;
+    }
+    
+    .course-details {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+    
+    .course-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .course-price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #0ff;
+    }
+    
+    .btn-view-course, .btn-coming-soon {
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-view-course {
+      background: #00bfbf;
+      color: #121212;
+    }
+    
+    .btn-view-course:hover {
+      background: #0ff;
+      box-shadow: 0 0 10px #0ff;
+    }
+    
+    .btn-coming-soon {
+      background: rgba(255, 255, 255, 0.1);
+      color: #bbb;
+      cursor: not-allowed;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .course-categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .category-btn {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      color: #bbb;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn:hover, .category-btn.active {
+      background: #00bfbf;
+      color: #121212;
+      border-color: #0ff;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#process">Process</a>
+        <a href="../index.html#software">Software</a>
+        <a href="../index.html#our-vibe">Our Vibe</a>
+        <a href="../index.html#pricing-calculator">Pricing</a>
+        <a href="../meet-up.html">Free Coding Bootcamp</a>
+        <a href="index.html" class="highlight-nav">Premium Courses</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="courses-hero">
+    <div class="container">
+      <h1>Premium AI Coding <span style="color:#0ff">Courses</span></h1>
+      <p class="hero-subtitle">Level up your coding skills with our expert-led courses that combine AI with practical programming.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>&lt;Browse Our Courses /&gt;</h2>
+      
+      <div class="course-categories">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="beginner">Beginner</button>
+        <button class="category-btn" data-category="intermediate">Intermediate</button>
+        <button class="category-btn" data-category="advanced">Advanced</button>
+        <button class="category-btn" data-category="workshop">Workshops</button>
+      </div>
+
+      <div class="course-grid">
+        <!-- Web Development Course -->
+        <div class="course-card" data-category="beginner">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web Development">
+            <div class="course-level beginner">Beginner</div>
+          </div>
+          <div class="course-content">
+            <h3>AI-Assisted Web Development</h3>
+            <p>Learn to build modern websites faster with AI tools while mastering HTML, CSS, and JavaScript fundamentals.</p>
+            <div class="course-details">
+              <span><i class="fas fa-clock"></i> 8 weeks</span>
+              <span><i class="fas fa-video"></i> 36 lessons</span>
+              <span><i class="fas fa-tasks"></i> 8 projects</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$299</span>
+              <a href="web-fundamentals/index.html" class="btn-view-course">View Course</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Stack Development Course -->
+        <div class="course-card" data-category="intermediate">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Full-Stack Development">
+            <div class="course-level intermediate">Intermediate</div>
+          </div>
+          <div class="course-content">
+            <h3>Full-Stack AI Development</h3>
+            <p>Build complete web applications using React, Node.js, and modern AI tools to accelerate your development workflow.</p>
+            <div class="course-details">
+              <span><i class="fas fa-clock"></i> 12 weeks</span>
+              <span><i class="fas fa-video"></i> 48 lessons</span>
+              <span><i class="fas fa-tasks"></i> 6 projects</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$499</span>
+              <a href="#" class="btn-coming-soon">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Model Fine-Tuning Course -->
+        <div class="course-card" data-category="advanced">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI Model Fine-Tuning">
+            <div class="course-level advanced">Advanced</div>
+          </div>
+          <div class="course-content">
+            <h3>AI Model Fine-Tuning for Developers</h3>
+            <p>Learn to customize and fine-tune large language models for specific use cases and integrate them into your applications.</p>
+            <div class="course-details">
+              <span><i class="fas fa-clock"></i> 6 weeks</span>
+              <span><i class="fas fa-video"></i> 24 lessons</span>
+              <span><i class="fas fa-tasks"></i> 4 projects</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$699</span>
+              <a href="#" class="btn-coming-soon">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile App Development Workshop -->
+        <div class="course-card" data-category="workshop">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile App Development">
+            <div class="course-level workshop">Workshop</div>
+          </div>
+          <div class="course-content">
+            <h3>Weekend Workshop: Mobile App Dev with AI</h3>
+            <p>Build a complete React Native mobile app in just one weekend using AI coding assistants. Includes live mentoring.</p>
+            <div class="course-details">
+              <span><i class="fas fa-clock"></i> 2 days</span>
+              <span><i class="fas fa-users"></i> Live mentoring</span>
+              <span><i class="fas fa-tasks"></i> 1 project</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$199</span>
+              <a href="#" class="btn-coming-soon">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Science with AI Course -->
+        <div class="course-card" data-category="intermediate">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Data Science">
+            <div class="course-level intermediate">Intermediate</div>
+          </div>
+          <div class="course-content">
+            <h3>Data Science with AI Tools</h3>
+            <p>Learn to analyze data, create visualizations, and build machine learning models using AI-assisted techniques.</p>
+            <div class="course-details">
+              <span><i class="fas fa-clock"></i> 10 weeks</span>
+              <span><i class="fas fa-video"></i> 40 lessons</span>
+              <span><i class="fas fa-tasks"></i> 5 projects</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$449</span>
+              <a href="#" class="btn-coming-soon">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cybersecurity Course -->
+        <div class="course-card" data-category="advanced">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cybersecurity">
+            <div class="course-level advanced">Advanced</div>
+          </div>
+          <div class="course-content">
+            <h3>AI-Powered Cybersecurity</h3>
+            <p>Master modern cybersecurity techniques enhanced by AI tools to detect vulnerabilities and protect against attacks.</p>
+            <div class="course-details">
+              <span><i class="fas fa-clock"></i> 8 weeks</span>
+              <span><i class="fas fa-video"></i> 32 lessons</span>
+              <span><i class="fas fa-tasks"></i> 6 projects</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$599</span>
+              <a href="#" class="btn-coming-soon">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center; background-size: cover; padding: 80px 0; text-align: center; margin: 50px 0;">
+    <div class="container">
+      <h2>Unlock Your Coding Potential with AI</h2>
+      <p style="max-width: 700px; margin: 20px auto; color: #bbb;">Join thousands of developers who are leveraging the power of AI to accelerate their coding skills and build amazing projects.</p>
+      <div style="margin-top: 30px;">
+        <a href="#" style="background: #0ff; color: #121212; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-right: 15px; transition: all 0.3s ease;">Get Early Access</a>
+        <a href="../meet-up.html" style="background: transparent; border: 2px solid #0ff; color: #0ff; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">Try Free Meetup First</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2025 Root Access. All rights reserved.</p>
+        <p>Premium AI coding courses and workshops</p>
+        <div style="margin-top: 15px;">
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-github"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-discord"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Category filtering
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const courseCards = document.querySelectorAll('.course-card');
+      
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Update active state
+          categoryButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          const category = this.getAttribute('data-category');
+          
+          // Filter courses
+          courseCards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html> 
