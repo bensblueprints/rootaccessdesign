@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Mastery Curriculum | Root Access</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Curriculum page specific styles */
+    .curriculum-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .curriculum-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #bbb;
+      font-size: 1.2rem;
+    }
+    
+    .back-to-sales {
+      display: inline-block;
+      background: #00bfbf;
+      color: #121212;
+      padding: 12px 25px;
+      margin-top: 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-sales:hover {
+      background: #0ff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    
+    .curriculum-overview {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .overview-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .overview-item i {
+      color: #0ff;
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+    
+    .curriculum-content {
+      margin: 60px 0;
+    }
+    
+    .curriculum-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .curriculum-header h2 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    
+    .module {
+      background: rgba(15, 15, 15, 0.7);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .module-header {
+      background: rgba(0, 255, 255, 0.1);
+      padding: 20px 25px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .module-header h3 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    
+    .module-header i {
+      color: #0ff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .module.active .module-header i {
+      transform: rotate(180deg);
+    }
+    
+    .module-content {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+    
+    .module.active .module-content {
+      padding: 25px;
+      max-height: 2000px;
+    }
+    
+    .module-description {
+      color: #bbb;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+    
+    .lessons-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .lesson-item {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .lesson-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .lesson-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #0ff;
+    }
+    
+    .lesson-title {
+      font-weight: 500;
+    }
+    
+    .lesson-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    
+    .lesson-duration {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .lesson-duration i {
+      color: #0ff;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <a href="../../index.html">Home</a>
+        <a href="../../index.html#process">Process</a>
+        <a href="../../index.html#software">Software</a>
+        <a href="../../index.html#our-vibe">Our Vibe</a>
+        <a href="../../index.html#pricing-calculator">Pricing</a>
+        <div class="courses-menu-item">
+          <a href="../index.html" class="highlight-nav">Courses</a>
+          <div class="mega-menu">
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">Web Development</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../web-fundamentals/index.html">Web Fundamentals</a></li>
+                <li><a href="../html-css-mastery/index.html">HTML & CSS Mastery</a></li>
+                <li><a href="../javascript-essentials/index.html">JavaScript Essentials</a></li>
+                <li><a href="../intermediate-javascript/index.html">Intermediate JavaScript</a></li>
+                <li><a href="../responsive-web-design/index.html">Responsive Web Design</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">Frontend Frameworks</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../react-fundamentals/index.html">React Fundamentals</a></li>
+                <li><a href="../react-advanced/index.html">Advanced React</a></li>
+                <li><a href="../advanced-react-patterns/index.html">React Design Patterns</a></li>
+                <li><a href="../ui-ux-design-fundamentals/index.html">UI/UX Fundamentals</a></li>
+                <li><a href="../ui-ux-advanced/index.html">Advanced UI/UX Design</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">Backend & API</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../node-backend/index.html">Node.js Backend</a></li>
+                <li><a href="../api-development/index.html">API Development</a></li>
+                <li><a href="../database-design/index.html">Database Design</a></li>
+                <li><a href="../golang-basics/index.html">Go Basics</a></li>
+                <li><a href="../python-fundamentals/index.html">Python Fundamentals</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-column">
+              <h3 class="mega-menu-title">AI & Machine Learning</h3>
+              <ul class="mega-menu-list">
+                <li><a href="../ml-basics/index.html">Machine Learning Basics</a></li>
+                <li><a href="../machine-learning-for-devs/index.html">ML for Developers</a></li>
+                <li><a href="../ai-systems-integration/index.html">AI Systems Integration</a></li>
+                <li><a href="../full-stack-ai/index.html">Full-Stack AI</a></li>
+                <li><a href="../cybersecurity-ai/index.html">AI Cybersecurity</a></li>
+              </ul>
+            </div>
+            <div class="mega-menu-footer">
+              <a href="../index.html" class="mega-menu-all">View All Courses</a>
+              <a href="../../meet-up.html" class="mega-menu-featured">
+                <i class="fas fa-star"></i>
+                <span class="mega-menu-featured-text">Free Coding Bootcamp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="../../meet-up.html">Free Coding Bootcamp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="curriculum-hero">
+    <div class="container">
+      <h1>HTML & CSS <span style="color:#0ff">Mastery</span> Curriculum</h1>
+      <p class="hero-subtitle">A comprehensive breakdown of all modules and lessons in our HTML & CSS course</p>
+      
+      <div class="curriculum-overview">
+        <div class="overview-item">
+          <i class="fas fa-layer-group"></i>
+          <span>8 Modules</span>
+        </div>
+        <div class="overview-item">
+          <i class="fas fa-video"></i>
+          <span>32 Video Lessons</span>
+        </div>
+        <div class="overview-item">
+          <i class="fas fa-laptop-code"></i>
+          <span>28 Coding Exercises</span>
+        </div>
+        <div class="overview-item">
+          <i class="fas fa-project-diagram"></i>
+          <span>6 Projects</span>
+        </div>
+      </div>
+      
+      <a href="sales-page.html" class="back-to-sales">Back to Course Overview</a>
+    </div>
+  </section>
+
+  <section class="container curriculum-content">
+    <div class="curriculum-header">
+      <h2>Course Modules</h2>
+      <div class="curriculum-filter">
+        <button class="expand-all">Expand All</button>
+        <button class="collapse-all">Collapse All</button>
+      </div>
+    </div>
+    
+    <!-- Module 1 -->
+    <div class="module active">
+      <div class="module-header">
+        <h3>Module 1: HTML Fundamentals</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="module-content">
+        <p class="module-description">This foundational module introduces you to HTML, the backbone of all web pages, and teaches you essential elements and structure.</p>
+        
+        <ul class="lessons-list">
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Introduction to HTML and Web Standards</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 30 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">HTML Document Structure and Semantic Markup</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 45 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-laptop-code"></i></div>
+              <span class="lesson-title">Working with Text, Lists, and Tables</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 40 min</span>
+              <span class="lesson-type">Practical Exercise</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">HTML Forms and Input Elements</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 50 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-project-diagram"></i></div>
+              <span class="lesson-title">Project: Personal Profile Page</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 1.5 hrs</span>
+              <span class="lesson-type">Guided Project</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Module 2 -->
+    <div class="module">
+      <div class="module-header">
+        <h3>Module 2: CSS Fundamentals</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="module-content">
+        <p class="module-description">Learn the foundations of CSS, allowing you to style HTML elements and create visually appealing web pages.</p>
+        
+        <ul class="lessons-list">
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Introduction to CSS and Styling Models</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 35 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Selectors, Properties, and Values</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 50 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-laptop-code"></i></div>
+              <span class="lesson-title">The Box Model and Layout Basics</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 55 min</span>
+              <span class="lesson-type">Practical Exercise</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-project-diagram"></i></div>
+              <span class="lesson-title">Project: Styled Product Card</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 1 hr</span>
+              <span class="lesson-type">Guided Project</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Module 3 -->
+    <div class="module">
+      <div class="module-header">
+        <h3>Module 3: Layout Techniques</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="module-content">
+        <p class="module-description">Master various CSS layout techniques to create complex, responsive web page structures.</p>
+        
+        <ul class="lessons-list">
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Float-based Layouts</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 30 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Flexbox Layout</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 60 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-laptop-code"></i></div>
+              <span class="lesson-title">CSS Grid Layout</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 60 min</span>
+              <span class="lesson-type">Practical Exercise</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-project-diagram"></i></div>
+              <span class="lesson-title">Project: Portfolio Layout</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 2 hrs</span>
+              <span class="lesson-type">Guided Project</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Module 4 -->
+    <div class="module">
+      <div class="module-header">
+        <h3>Module 4: Responsive Design</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="module-content">
+        <p class="module-description">Learn how to create websites that adapt to different screen sizes and devices using responsive design techniques.</p>
+        
+        <ul class="lessons-list">
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Media Queries and Breakpoints</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 45 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-play"></i></div>
+              <span class="lesson-title">Responsive Typography and Images</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 40 min</span>
+              <span class="lesson-type">Video Lesson</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-laptop-code"></i></div>
+              <span class="lesson-title">Mobile-First Design Approach</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 50 min</span>
+              <span class="lesson-type">Practical Exercise</span>
+            </div>
+          </li>
+          
+          <li class="lesson-item">
+            <div class="lesson-info">
+              <div class="lesson-icon"><i class="fas fa-project-diagram"></i></div>
+              <span class="lesson-title">Project: Responsive Landing Page</span>
+            </div>
+            <div class="lesson-meta">
+              <span class="lesson-duration"><i class="fas fa-clock"></i> 2.5 hrs</span>
+              <span class="lesson-type">Guided Project</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2025 Root Access. All rights reserved.</p>
+        <p>Premium AI coding courses and workshops</p>
+        <div style="margin-top: 15px;">
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-github"></i></a>
+          <a href="https://discord.gg/NY4XBS2vGa" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-discord"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Module accordion functionality
+      const moduleHeaders = document.querySelectorAll('.module-header');
+      
+      moduleHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          const module = this.parentElement;
+          module.classList.toggle('active');
+        });
+      });
+      
+      // Expand/collapse all functionality
+      const expandAllButton = document.querySelector('.expand-all');
+      const collapseAllButton = document.querySelector('.collapse-all');
+      const modules = document.querySelectorAll('.module');
+      
+      expandAllButton.addEventListener('click', function() {
+        modules.forEach(module => {
+          module.classList.add('active');
+        });
+      });
+      
+      collapseAllButton.addEventListener('click', function() {
+        modules.forEach(module => {
+          module.classList.remove('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html> 
