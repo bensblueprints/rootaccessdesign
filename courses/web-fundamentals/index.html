@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Assisted Web Development Fundamentals | Root Access</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Course specific styles */
+    .course-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 100px 0;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .course-hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #bbb;
+      font-size: 1.2rem;
+    }
+    
+    .course-info {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      color: #bbb;
+    }
+    
+    .info-item i {
+      color: #0ff;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .course-price-tag {
+      background: rgba(0, 255, 255, 0.2);
+      padding: 5px 15px;
+      border-radius: 20px;
+      color: #0ff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 30px;
+      display: inline-block;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .course-content-wrapper {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 40px;
+      margin: 50px 0;
+    }
+    
+    .course-sidebar {
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 20px;
+      position: sticky;
+      top: 20px;
+      align-self: start;
+    }
+    
+    .sidebar-section {
+      margin-bottom: 30px;
+    }
+    
+    .sidebar-section h3 {
+      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .course-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .enrollment-btn {
+      display: block;
+      background: #0ff;
+      color: #121212;
+      text-align: center;
+      padding: 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .enrollment-btn:hover {
+      background: #80ffff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    
+    .module {
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .module-header {
+      background: rgba(0, 255, 255, 0.1);
+      padding: 15px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .module-header h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+    
+    .module-content {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    
+    .module.active .module-content {
+      padding: 20px;
+      max-height: 1000px;
+    }
+    
+    .module-lessons {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .lesson-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .lesson-item:last-child {
+      border-bottom: none;
+    }
+    
+    .lesson-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .lesson-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.1);
+      color: #0ff;
+    }
+    
+    .lesson-duration {
+      color: #bbb;
+      font-size: 0.85rem;
+    }
+
+    .course-description {
+      margin-bottom: 40px;
+    }
+    
+    .course-description p {
+      color: #bbb;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .course-description ul {
+      padding-left: 20px;
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+    
+    .course-description li {
+      margin-bottom: 10px;
+    }
+    
+    .what-youll-learn {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .learn-item {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background: rgba(20, 20, 20, 0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+    
+    .learn-item i {
+      color: #0ff;
+      font-size: 1.2rem;
+      margin-top: 3px;
+    }
+    
+    .learn-item p {
+      margin: 0;
+      color: #bbb;
+    }
+    
+    .instructor {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      background: rgba(20, 20, 20, 0.7);
+      border-radius: 10px;
+      margin: 30px 0;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+    
+    .instructor-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    
+    .instructor-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .instructor-info {
+      flex: 1;
+    }
+    
+    .instructor-info h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    
+    .instructor-info p {
+      color: #bbb;
+      margin-bottom: 10px;
+    }
+    
+    .instructor-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .instructor-social a {
+      color: #bbb;
+      transition: color 0.3s ease;
+    }
+    
+    .instructor-social a:hover {
+      color: #0ff;
+    }
+
+    @media (max-width: 992px) {
+      .course-content-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .course-sidebar {
+        position: static;
+        order: -1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .course-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .what-youll-learn {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <a href="../../index.html">Home</a>
+        <a href="../../index.html#process">Process</a>
+        <a href="../../index.html#software">Software</a>
+        <a href="../../index.html#our-vibe">Our Vibe</a>
+        <a href="../../index.html#pricing-calculator">Pricing</a>
+        <a href="../../meet-up.html">Free Coding Bootcamp</a>
+        <a href="../index.html" class="highlight-nav">Courses</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="course-hero">
+    <div class="container">
+      <h1>AI-Assisted <span style="color:#0ff">Web Development</span> Fundamentals</h1>
+      <p class="hero-subtitle">Learn to build modern, responsive websites faster with AI tools while mastering HTML, CSS, and JavaScript fundamentals.</p>
+      
+      <div class="course-info">
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <span>8 Weeks</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-video"></i>
+          <span>36 Lessons</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-tasks"></i>
+          <span>8 Projects</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-signal"></i>
+          <span>Beginner Level</span>
+        </div>
+      </div>
+      
+      <div class="course-price-tag">$299.00</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="course-content-wrapper">
+      <div class="course-main-content">
+        <div class="course-description">
+          <h2>About This Course</h2>
+          <p>Welcome to <strong>AI-Assisted Web Development Fundamentals</strong> - the most comprehensive course that combines traditional web development skills with cutting-edge AI tools to supercharge your learning and productivity.</p>
+          
+          <p>In this 8-week journey, you'll not only master the core fundamentals of HTML, CSS, and JavaScript but also learn how to leverage AI coding assistants to accelerate your development process. By the end of this course, you'll be able to build beautiful, responsive websites in a fraction of the time it takes traditional developers.</p>
+          
+          <p>Whether you're a complete beginner or have some experience with web development, this course is designed to take you from basics to building real-world projects with AI assistance. The knowledge and skills you gain will set you apart in today's tech landscape where AI-enhanced development is becoming the industry standard.</p>
+          
+          <h3>What You'll Learn</h3>
+          <div class="what-youll-learn">
+            <div class="learn-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Build responsive websites with HTML5, CSS3, and JavaScript from scratch</p>
+            </div>
+            <div class="learn-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Master using AI coding assistants to accelerate your development workflow</p>
+            </div>
+            <div class="learn-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Create modern UI designs with CSS frameworks and AI design tools</p>
+            </div>
+            <div class="learn-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Implement interactive features using JavaScript and API integrations</p>
+            </div>
+            <div class="learn-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Deploy your websites using modern hosting platforms and CI/CD</p>
+            </div>
+            <div class="learn-item">
+              <i class="fas fa-check-circle"></i>
+              <p>Solve common web development problems with AI assistance</p>
+            </div>
+          </div>
+          
+          <h3>Prerequisites</h3>
+          <p>This course is designed for beginners, so no prior programming experience is required. You'll need:</p>
+          <ul>
+            <li>A computer with internet access</li>
+            <li>Basic computer literacy</li>
+            <li>Enthusiasm to learn and experiment with AI tools</li>
+          </ul>
+          
+          <h3>Course Projects</h3>
+          <p>Throughout this course, you'll build 8 real-world projects that progressively increase in complexity:</p>
+          <ul>
+            <li><strong>Personal Portfolio Site</strong> - Showcase your work and skills</li>
+            <li><strong>Responsive Landing Page</strong> - For a fictional product or service</li>
+            <li><strong>Interactive Quiz App</strong> - Using JavaScript and DOM manipulation</li>
+            <li><strong>Weather Dashboard</strong> - Integrating with external APIs</li>
+            <li><strong>E-commerce Product Page</strong> - With cart functionality</li>
+            <li><strong>Task Management App</strong> - With local storage persistence</li>
+            <li><strong>Blog Platform Interface</strong> - With authentication flows</li>
+            <li><strong>Final Capstone Project</strong> - Combining all learned skills</li>
+          </ul>
+        </div>
+        
+        <div class="course-curriculum">
+          <h2>Course Curriculum</h2>
+          
+          <div class="module active">
+            <div class="module-header">
+              <h3>Module 1: Web Development & AI Fundamentals</h3>
+              <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="module-content">
+              <ul class="module-lessons">
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Course Introduction & Setup</span>
+                  </div>
+                  <span class="lesson-duration">15 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>The Web Development Landscape in the AI Era</span>
+                  </div>
+                  <span class="lesson-duration">20 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Setting Up Your Dev Environment & AI Tools</span>
+                  </div>
+                  <span class="lesson-duration">30 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-tasks"></i></div>
+                    <span>Project: Setting Up Your First Project</span>
+                  </div>
+                  <span class="lesson-duration">45 min</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="module">
+            <div class="module-header">
+              <h3>Module 2: HTML Fundamentals with AI</h3>
+              <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="module-content">
+              <ul class="module-lessons">
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>HTML Structure & Semantic Elements</span>
+                  </div>
+                  <span class="lesson-duration">25 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Using AI to Generate HTML Boilerplates</span>
+                  </div>
+                  <span class="lesson-duration">20 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Forms, Tables, and Media Elements</span>
+                  </div>
+                  <span class="lesson-duration">30 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-tasks"></i></div>
+                    <span>Project: Building Your Portfolio Structure</span>
+                  </div>
+                  <span class="lesson-duration">1 hr</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="module">
+            <div class="module-header">
+              <h3>Module 3: CSS Styling & Layout with AI Assistance</h3>
+              <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="module-content">
+              <ul class="module-lessons">
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>CSS Selectors, Properties, and Values</span>
+                  </div>
+                  <span class="lesson-duration">30 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Leveraging AI for CSS Generation</span>
+                  </div>
+                  <span class="lesson-duration">25 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Flexbox & CSS Grid with AI Assistance</span>
+                  </div>
+                  <span class="lesson-duration">45 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Responsive Design Principles</span>
+                  </div>
+                  <span class="lesson-duration">35 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-tasks"></i></div>
+                    <span>Project: Styling Your Portfolio</span>
+                  </div>
+                  <span class="lesson-duration">1.5 hrs</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="module">
+            <div class="module-header">
+              <h3>Module 4: JavaScript Basics with AI Pair Programming</h3>
+              <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="module-content">
+              <ul class="module-lessons">
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>JavaScript Syntax & Data Types</span>
+                  </div>
+                  <span class="lesson-duration">35 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>Control Flow & Functions</span>
+                  </div>
+                  <span class="lesson-duration">40 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>AI-Assisted JavaScript Development</span>
+                  </div>
+                  <span class="lesson-duration">30 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-play"></i></div>
+                    <span>DOM Manipulation & Events</span>
+                  </div>
+                  <span class="lesson-duration">45 min</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-tasks"></i></div>
+                    <span>Project: Adding Interactivity to Your Portfolio</span>
+                  </div>
+                  <span class="lesson-duration">2 hrs</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="module">
+            <div class="module-header">
+              <h3>Module 5-8: Advanced Topics & Final Projects</h3>
+              <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="module-content">
+              <p>Modules 5-8 cover advanced topics including:</p>
+              <ul class="module-lessons">
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-list"></i></div>
+                    <span>API Integration with AI Assistance</span>
+                  </div>
+                  <span class="lesson-duration">Module 5</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-list"></i></div>
+                    <span>Front-end Frameworks Introduction</span>
+                  </div>
+                  <span class="lesson-duration">Module 6</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-list"></i></div>
+                    <span>Web Performance & Optimization</span>
+                  </div>
+                  <span class="lesson-duration">Module 7</span>
+                </li>
+                <li class="lesson-item">
+                  <div class="lesson-info">
+                    <div class="lesson-icon"><i class="fas fa-list"></i></div>
+                    <span>Final Capstone Project & Deployment</span>
+                  </div>
+                  <span class="lesson-duration">Module 8</span>
+                </li>
+              </ul>
+              <p><a href="#" style="color: #0ff; text-decoration: none;">Click to unlock full curriculum access with enrollment</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="instructor">
+          <div class="instructor-image">
+            <img src="https://github.com/benrobo.png" alt="Ben Robo">
+          </div>
+          <div class="instructor-info">
+            <h3>Ben Robo</h3>
+            <p>Senior Full-Stack Developer & AI Specialist</p>
+            <p>Ben has over 8 years of experience building web applications and has been at the forefront of integrating AI tools into the development workflow. He has trained more than 5,000 students in web development and AI integration techniques.</p>
+            <div class="instructor-social">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="course-sidebar">
+        <div class="sidebar-section">
+          <h3>Course Info</h3>
+          <div class="course-stats">
+            <div class="stat-item">
+              <span>Duration:</span>
+              <span>8 Weeks</span>
+            </div>
+            <div class="stat-item">
+              <span>Lessons:</span>
+              <span>36</span>
+            </div>
+            <div class="stat-item">
+              <span>Projects:</span>
+              <span>8</span>
+            </div>
+            <div class="stat-item">
+              <span>Level:</span>
+              <span>Beginner</span>
+            </div>
+            <div class="stat-item">
+              <span>Students Enrolled:</span>
+              <span>1,245</span>
+            </div>
+            <div class="stat-item">
+              <span>Last Updated:</span>
+              <span>October 2023</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>This Course Includes</h3>
+          <div class="course-stats">
+            <div class="stat-item">
+              <span><i class="fas fa-video"></i> Video Lectures</span>
+            </div>
+            <div class="stat-item">
+              <span><i class="fas fa-file-code"></i> Coding Exercises</span>
+            </div>
+            <div class="stat-item">
+              <span><i class="fas fa-project-diagram"></i> 8 Real-world Projects</span>
+            </div>
+            <div class="stat-item">
+              <span><i class="fas fa-download"></i> Downloadable Resources</span>
+            </div>
+            <div class="stat-item">
+              <span><i class="fas fa-certificate"></i> Certificate of Completion</span>
+            </div>
+            <div class="stat-item">
+              <span><i class="fas fa-comments"></i> Community Support</span>
+            </div>
+            <div class="stat-item">
+              <span><i class="fas fa-infinity"></i> Lifetime Access</span>
+            </div>
+          </div>
+        </div>
+        
+        <a href="#" class="enrollment-btn">Enroll Now - $299</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>&copy; 2025 Root Access. All rights reserved.</p>
+        <p>Premium AI coding courses and workshops</p>
+        <div style="margin-top: 15px;">
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-github"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-discord"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: #bbb; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Module accordion functionality
+      const moduleHeaders = document.querySelectorAll('.module-header');
+      
+      moduleHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          const module = this.parentElement;
+          
+          // Close all other modules
+          document.querySelectorAll('.module').forEach(mod => {
+            if (mod !== module) {
+              mod.classList.remove('active');
+            }
+          });
+          
+          // Toggle current module
+          module.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html> 
