@@ -5,7 +5,8 @@
   "main": "discord-proxy.js",
   "scripts": {
     "start": "node discord-proxy.js",
-    "dev": "nodemon discord-proxy.js"
+    "dev": "nodemon discord-proxy.js",
+    "web": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.20.3",

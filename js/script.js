@@ -86,6 +86,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Cost calculator functionality
   initCalculator();
+  
+  // Social sharing functionality
+  setupSocialSharing();
+  
+  // Handle floating chat button if it exists
+  const floatingChatBtn = document.getElementById('floatingChatButton');
+  if (floatingChatBtn) {
+    floatingChatBtn.addEventListener('click', function() {
+      window.open('https://discord.gg/NY4XBS2vGa', '_blank');
+    });
+  }
 });
 
 // Initialize the pricing calculator
@@ -195,4 +206,57 @@ function initCalculator() {
   
   // Initialize
   updateValues();
+}
+
+// Social sharing functionality
+function setupSocialSharing() {
+  const shareButtons = document.querySelectorAll('.share-button');
+  
+  if (shareButtons.length === 0) return;
+  
+  shareButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const platform = this.getAttribute('data-platform');
+      const shareUrl = encodeURIComponent(window.location.href);
+      const shareTitle = encodeURIComponent(document.title);
+      const shareText = encodeURIComponent('Join me at the FREE Friday Night AI Coding Bootcamp at Supanich Condo in Chiang Mai! Learn to build a MRT/BTS trains application. Beginners welcome!');
+      
+      let shareLink = '';
+      
+      switch (platform) {
+        case 'facebook':
+          shareLink = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+          break;
+        case 'twitter':
+          shareLink = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
+          break;
+        case 'linkedin':
+          shareLink = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+          break;
+        case 'whatsapp':
+          shareLink = `https://wa.me/?text=${shareText}%20${shareUrl}`;
+          break;
+        case 'email':
+          shareLink = `mailto:?subject=${shareTitle}&body=${shareText}%20${shareUrl}`;
+          break;
+      }
+      
+      if (shareLink) {
+        window.open(shareLink, '_blank', 'width=600,height=400');
+      }
+    });
+  });
+  
+  // Also setup instructor social links
+  const instructorSocials = document.querySelectorAll('.instructor-socials a');
+  instructorSocials.forEach(link => {
+    if (link.getAttribute('href') === '#') {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Social profile link will be available soon!');
+      });
+    }
+  });
 } 

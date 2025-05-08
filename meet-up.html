@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Root Access — Free Friday Night AI Coding Bootcamp</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#software">Software</a>
+        <a href="index.html#our-vibe">Our Vibe</a>
+        <a href="index.html#pricing-calculator">Pricing</a>
+        <a href="meet-up.html" class="highlight-nav">Free Coding Bootcamp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="logo-container">
+      <div class="terminal-prompt"></div>
+      <div class="logo-text" id="logoText"></div><span id="logo-cursor"></span>
+    </div>
+    <h1 class="meetup-title">FREE FRIDAY NIGHT<br>AI CODING BOOTCAMP</h1>
+    <p class="meetup-time">Every Friday 6:30 - 8:00 PM</p>
+    <p class="meetup-description">
+      AI Vibe Coding - Learn To Build Your First Software Application. Even if you can't code!
+    </p>
+    
+    <div class="meetup-highlight">
+      <h2>This Month:</h2>
+      <p>We're Building A MRT/BTS Trains Application. Come Join. Beginners Welcome</p>
+      
+      <div class="transport-logos">
+        <div class="bts-logo">BTS</div>
+        <div class="mrt-logo">MRT</div>
+      </div>
+      <p class="seats-limited">SEATS LIMITED SCAN TO RSVP AND TO GET DIRECTIONS</p>
+    </div>
+    
+    <div class="meetup-info">
+      <p>It's free to come, bring your best Laptop and internet connection- we'll be coding live!</p>
+      <p>Please Download Cursor and Create a Github Account</p>
+    </div>
+    
+    <div class="qr-code-container">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/Y8F3C4DWmUJfMRZ47" alt="QR Code for Location" class="qr-code">
+    </div>
+    
+    <div class="social-share-container">
+      <p>Share this event:</p>
+      <div class="social-share-buttons">
+        <button class="share-button" data-platform="facebook">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+        <button class="share-button" data-platform="twitter">
+          <i class="fab fa-twitter"></i>
+        </button>
+        <button class="share-button" data-platform="linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </button>
+        <button class="share-button" data-platform="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </button>
+        <button class="share-button" data-platform="email">
+          <i class="fas fa-envelope"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="discord-invite">
+      <div class="discord-invite-content">
+        <i class="fab fa-discord"></i>
+        <div class="discord-text">
+          <h3>Join Our Discord Community</h3>
+          <p>Get help, connect with other attendees, and stay updated on future bootcamps!</p>
+        </div>
+        <a href="https://discord.gg/NY4XBS2vGa" target="_blank" class="discord-button">Join Discord</a>
+      </div>
+    </div>
+    
+    <div class="cta">
+      <button onclick="document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });">Register Now</button>
+      <button onclick="window.location.href='https://maps.app.goo.gl/Y8F3C4DWmUJfMRZ47'">Get Directions</button>
+    </div>
+  </section>
+
+  <section id="location" class="section">
+    <h2>&lt;Meet Up Location /&gt;</h2>
+    <div class="location-container">
+      <div class="location-details">
+        <h3>Supanich Condo</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Chiang Mai, Thailand</p>
+        <p><i class="fas fa-calendar"></i> Every Friday</p>
+        <p><i class="fas fa-clock"></i> 6:30 PM - 8:00 PM</p>
+        <p>Join us for a hands-on AI coding experience where we'll be building real-world applications using Cursor and GitHub. This month, we're focusing on creating a MRT/BTS trains application.</p>
+        <p>Whether you're a complete beginner or have some coding experience, our bootcamp is designed to help you learn practical skills in a supportive environment.</p>
+        <div class="directions-cta">
+          <button onclick="window.location.href='https://maps.app.goo.gl/Y8F3C4DWmUJfMRZ47'">
+            <i class="fas fa-directions"></i> Get Google Maps Directions
+          </button>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3777.0300261701713!2d98.97612!3d18.796266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da3aa50b95d195%3A0x9cd3a76c38798163!2sSupanich%20Condo%2C%20Chiang%20Mai!5e0!3m2!1sen!2sth!4v1653000000000!5m2!1sen!2sth" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="registration" class="section process-section">
+    <h2>&lt;Register Now /&gt;</h2>
+    <p class="section-tagline">Only <span id="registration-count">20</span> seats available for this Friday's session</p>
+    
+    <div class="registration-form-container">
+      <form id="registration-form" class="registration-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+        </div>
+        
+        <div class="form-group">
+          <label for="experience">Coding Experience</label>
+          <select id="experience" name="experience" required>
+            <option value="" disabled selected>Select your experience level</option>
+            <option value="none">No experience at all</option>
+            <option value="beginner">Beginner (some basics)</option>
+            <option value="intermediate">Intermediate (worked on some projects)</option>
+            <option value="advanced">Advanced (comfortable coding)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="expectations">What do you hope to learn?</label>
+          <textarea id="expectations" name="expectations" placeholder="Tell us what you'd like to get out of this session"></textarea>
+        </div>
+        
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="bring-laptop" name="bring-laptop" required>
+          <label for="bring-laptop">I understand I need to bring my own laptop</label>
+        </div>
+        
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="install-cursor" name="install-cursor" required>
+          <label for="install-cursor">I will install Cursor IDE before the session</label>
+        </div>
+        
+        <button type="submit" class="submit-button">Reserve My Seat</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="what-to-bring" class="section process-section">
+    <h2>&lt;What To Bring /&gt;</h2>
+    <p class="section-tagline">Make the most of your experience at our free AI coding bootcamp</p>
+    
+    <div class="feature-boxes">
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fas fa-laptop"></i></div>
+        <h3>Laptop</h3>
+        <p>Bring your laptop with a full charge. Any OS is fine - Windows, Mac, or Linux.</p>
+      </div>
+      
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+        <h3>Internet Connection</h3>
+        <p>Please bring a mobile hotspot or ensure you can connect to WiFi.</p>
+      </div>
+      
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fas fa-download"></i></div>
+        <h3>Download Cursor</h3>
+        <p>Install Cursor IDE before the meetup: <a href="https://cursor.sh" target="_blank">cursor.sh</a></p>
+      </div>
+      
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fab fa-github"></i></div>
+        <h3>GitHub Account</h3>
+        <p>Create a free GitHub account at <a href="https://github.com" target="_blank">github.com</a></p>
+      </div>
+    </div>
+    
+    <div class="materials-link-container">
+      <p>Want to get a head start? Check out our course materials for this month's project:</p>
+      <a href="course-materials.html" class="materials-link-button">
+        <i class="fas fa-book"></i> View MRT/BTS Project Materials
+      </a>
+    </div>
+  </section>
+
+  <section id="schedule" class="section">
+    <h2>&lt;Bootcamp Schedule /&gt;</h2>
+    <div class="schedule-container">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-handshake"></i></div>
+          <div class="timeline-content">
+            <h3>6:30 PM - Welcome & Introductions</h3>
+            <p>Meet the team and your fellow participants</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="timeline-content">
+            <h3>6:45 PM - Concept Overview</h3>
+            <p>Introduction to our MRT/BTS application project</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-code"></i></div>
+          <div class="timeline-content">
+            <h3>7:00 PM - Hands-on Coding</h3>
+            <p>Guided coding session with AI assistance</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-question-circle"></i></div>
+          <div class="timeline-content">
+            <h3>7:45 PM - Q&A Session</h3>
+            <p>Address questions and troubleshoot issues</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
+          <div class="timeline-content">
+            <h3>8:00 PM - Wrap-up & Next Steps</h3>
+            <p>Preview of next week's session</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="instructors" class="section">
+    <h2>&lt;Meet Your Instructors /&gt;</h2>
+    <div class="instructors-container">
+      <div class="instructor-card">
+        <div class="instructor-photo">
+          <img src="https://avatars.githubusercontent.com/u/60024781?v=4" alt="Instructor Photo">
+        </div>
+        <div class="instructor-info">
+          <h3>Benji</h3>
+          <p class="instructor-role">Lead Instructor</p>
+          <p class="instructor-bio">Full-stack developer with expertise in AI-powered applications. Passionate about helping beginners start their coding journey.</p>
+          <div class="instructor-socials">
+            <a href="https://github.com/rootaccessdesign" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>© 2023 Root Access Design. All rights reserved.</p>
+        <p>Join us every Friday for our free AI coding bootcamp.</p>
+        <p>Location: Supanich Condo, Chiang Mai</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/registration.js"></script>
+  <script>
+    // Add custom styles for the MRT/BTS logos
+    document.addEventListener('DOMContentLoaded', function() {
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .meetup-title {
+          font-size: 4rem;
+          color: #0ff;
+          margin: 0;
+          line-height: 1.2;
+          animation: glitch 2s infinite;
+        }
+        
+        .meetup-time {
+          font-size: 2rem;
+          color: #0ff;
+          margin: 1rem 0;
+        }
+        
+        .meetup-description {
+          font-size: 1.2rem;
+          max-width: 600px;
+          text-align: center;
+          margin: 1rem auto;
+        }
+        
+        .meetup-highlight {
+          margin: 2rem 0;
+          text-align: center;
+        }
+        
+        .meetup-highlight h2 {
+          color: #00ff99;
+          margin-bottom: 0.5rem;
+        }
+        
+        .transport-logos {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin: 2rem 0;
+        }
+        
+        .bts-logo, .mrt-logo {
+          font-size: 2rem;
+          font-weight: bold;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          position: relative;
+        }
+        
+        .bts-logo {
+          color: #000;
+          background: #ff0055;
+        }
+        
+        .mrt-logo {
+          color: #fff;
+          background: #0055ff;
+        }
+        
+        .seats-limited {
+          color: #0ff;
+          font-weight: bold;
+          margin-top: 1rem;
+        }
+        
+        .meetup-info {
+          margin: 2rem 0;
+          text-align: center;
+        }
+        
+        .qr-code-container {
+          margin: 2rem 0;
+        }
+        
+        .qr-code {
+          width: 200px;
+          height: 200px;
+          background: #fff;
+          padding: 10px;
+          border-radius: 10px;
+        }
+        
+        .location-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
+        
+        .location-details {
+          padding: 2rem;
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 8px;
+        }
+        
+        .location-details h3 {
+          color: #00ff99;
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .location-details p {
+          margin-bottom: 1rem;
+          color: #eee;
+        }
+        
+        .location-details i {
+          color: #0ff;
+          margin-right: 0.5rem;
+        }
+        
+        .directions-cta button {
+          background: #0ff;
+          color: #000;
+          border: none;
+          padding: 0.8rem 1.5rem;
+          margin-top: 1rem;
+          border-radius: 4px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .directions-cta button:hover {
+          background: #00ff99;
+          transform: translateY(-3px);
+        }
+        
+        .map-container {
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .map-container iframe {
+          width: 100%;
+          height: 100%;
+        }
+        
+        .schedule-container {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        
+        .timeline {
+          position: relative;
+          padding: 2rem 0;
+        }
+        
+        .timeline:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50px;
+          bottom: 0;
+          width: 2px;
+          background: rgba(0, 255, 255, 0.3);
+        }
+        
+        .timeline-item {
+          position: relative;
+          padding-left: 120px;
+          margin-bottom: 2.5rem;
+        }
+        
+        .timeline-icon {
+          position: absolute;
+          left: 30px;
+          top: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #151515;
+          border: 2px solid #0ff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0ff;
+          font-size: 1.2rem;
+          z-index: 2;
+        }
+        
+        .timeline-content {
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 8px;
+          padding: 1.5rem;
+        }
+        
+        .timeline-content h3 {
+          color: #00ff99;
+          margin-top: 0;
+          margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+          color: #eee;
+          margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+          .meetup-title {
+            font-size: 2.5rem;
+          }
+          
+          .meetup-time {
+            font-size: 1.5rem;
+          }
+          
+          .transport-logos {
+            gap: 1rem;
+          }
+          
+          .bts-logo, .mrt-logo {
+            font-size: 1.5rem;
+            padding: 0.8rem 1.5rem;
+          }
+          
+          .location-container {
+            grid-template-columns: 1fr;
+          }
+          
+          .timeline:before {
+            left: 30px;
+          }
+          
+          .timeline-item {
+            padding-left: 80px;
+          }
+          
+          .timeline-icon {
+            left: 10px;
+          }
+        }
+        
+        /* Social sharing styles */
+        .social-share-container {
+          margin: 1.5rem 0;
+          text-align: center;
+        }
+        
+        .social-share-container p {
+          color: #ccc;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+        }
+        
+        .social-share-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-top: 0.5rem;
+        }
+        
+        .share-button {
+          background: rgba(30, 30, 30, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          color: #0ff;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1rem;
+        }
+        
+        .share-button:hover {
+          background: #0ff;
+          color: #151515;
+          transform: translateY(-3px);
+          box-shadow: 0 3px 10px rgba(0, 255, 255, 0.4);
+        }
+        
+        .share-button[data-platform="facebook"]:hover {
+          background: #1877f2;
+          border-color: #1877f2;
+          color: #fff;
+        }
+        
+        .share-button[data-platform="twitter"]:hover {
+          background: #1da1f2;
+          border-color: #1da1f2;
+          color: #fff;
+        }
+        
+        .share-button[data-platform="linkedin"]:hover {
+          background: #0077b5;
+          border-color: #0077b5;
+          color: #fff;
+        }
+        
+        .share-button[data-platform="whatsapp"]:hover {
+          background: #25d366;
+          border-color: #25d366;
+          color: #fff;
+        }
+        
+        .share-button[data-platform="email"]:hover {
+          background: #ff9800;
+          border-color: #ff9800;
+          color: #fff;
+        }
+        
+        /* Update CTA buttons for multiple buttons */
+        .cta {
+          margin-top: 2rem;
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        
+        .cta button {
+          min-width: 180px;
+        }
+        
+        .cta button:first-child {
+          background: #00ff99;
+        }
+        
+        .cta button:first-child:hover {
+          box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+          .social-share-buttons {
+            gap: 0.5rem;
+          }
+          
+          .share-button {
+            width: 35px;
+            height: 35px;
+            font-size: 0.9rem;
+          }
+          
+          .cta {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .cta button {
+            width: 100%;
+            max-width: 300px;
+          }
+        }
+        
+        /* Materials link styles */
+        .materials-link-container {
+          text-align: center;
+          margin-top: 3rem;
+          padding: 2rem;
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 8px;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        .materials-link-container p {
+          color: #eee;
+          margin-bottom: 1.5rem;
+          font-size: 1.1rem;
+        }
+        
+        .materials-link-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          background: linear-gradient(90deg, #0ff, #00ff99);
+          color: #000;
+          text-decoration: none;
+          font-weight: bold;
+          padding: 1rem 2rem;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          font-size: 1.1rem;
+        }
+        
+        .materials-link-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        .materials-link-button i {
+          font-size: 1.2rem;
+        }
+        
+        /* Discord invitation styles */
+        .discord-invite {
+          margin: 2.5rem auto;
+          max-width: 800px;
+          padding: 0 1rem;
+        }
+        
+        .discord-invite-content {
+          display: flex;
+          align-items: center;
+          background: rgba(88, 101, 242, 0.15);
+          border: 1px solid rgba(88, 101, 242, 0.5);
+          border-radius: 8px;
+          padding: 1.5rem;
+          gap: 1.5rem;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .discord-invite-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%235865F2' fill-opacity='0.05' d='M11.1 35.8c0-4.5 3.7-8.2 8.2-8.2h45.5c4.5 0 8.2 3.7 8.2 8.2v28.4c0 4.5-3.7 8.2-8.2 8.2H19.3c-4.5 0-8.2-3.7-8.2-8.2V35.8zM48 50l5.8-5.8H43.8l5.7 5.8zm-11.5 0l5.7-5.8H30.9l5.7 5.8zm23 0l5.7-5.8h-11.5l5.8 5.8z'/%3E%3C/svg%3E");
+          opacity: 0.5;
+        }
+        
+        .discord-invite-content > i {
+          font-size: 3.5rem;
+          color: #5865F2;
+          flex-shrink: 0;
+        }
+        
+        .discord-text {
+          flex-grow: 1;
+        }
+        
+        .discord-text h3 {
+          color: #fff;
+          margin: 0 0 0.5rem;
+          font-size: 1.5rem;
+        }
+        
+        .discord-text p {
+          color: #ccc;
+          margin: 0;
+          font-size: 1rem;
+        }
+        
+        .discord-button {
+          background: #5865F2;
+          color: #fff;
+          text-decoration: none;
+          font-weight: bold;
+          padding: 0.8rem 1.5rem;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+          box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4);
+        }
+        
+        .discord-button:hover {
+          background: #4752c4;
+          transform: translateY(-3px);
+          box-shadow: 0 7px 14px rgba(88, 101, 242, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+          .discord-invite-content {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            gap: 1rem;
+          }
+          
+          .discord-text {
+            margin-bottom: 1rem;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    });
+  </script>
+</body>
+</html> 

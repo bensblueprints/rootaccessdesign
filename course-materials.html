@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Materials - MRT/BTS Trains App | Root Access</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#software">Software</a>
+        <a href="index.html#our-vibe">Our Vibe</a>
+        <a href="index.html#pricing-calculator">Pricing</a>
+        <a href="meet-up.html" class="highlight-nav">Free Coding Bootcamp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="materials-hero">
+    <div class="logo-container">
+      <div class="terminal-prompt"></div>
+      <div class="logo-text" id="logoText"></div><span id="logo-cursor"></span>
+    </div>
+    <h1 class="materials-title">MRT/BTS Trains App</h1>
+    <p class="materials-subtitle">Course Materials & Project Guide</p>
+    
+    <div class="materials-navigation">
+      <a href="#overview" class="materials-nav-item">Project Overview</a>
+      <a href="#setup" class="materials-nav-item">Environment Setup</a>
+      <a href="#week1" class="materials-nav-item">Week 1: UI Design</a>
+      <a href="#week2" class="materials-nav-item">Week 2: API Integration</a>
+      <a href="#week3" class="materials-nav-item">Week 3: Maps & Routes</a>
+      <a href="#week4" class="materials-nav-item">Week 4: Final Touches</a>
+      <a href="#resources" class="materials-nav-item">Resources</a>
+    </div>
+  </section>
+
+  <section id="overview" class="section materials-section">
+    <h2>&lt;Project Overview /&gt;</h2>
+    <div class="materials-content">
+      <p>Welcome to our MRT/BTS Trains Application project! Over the course of 4 weeks, we'll build a full-featured web application that helps users navigate Chiang Mai's public transportation system.</p>
+      
+      <div class="project-features">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3>Interactive Maps</h3>
+          <p>Visual representation of MRT and BTS routes with station markers</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-route"></i></div>
+          <h3>Route Planning</h3>
+          <p>Find the fastest routes between stations with transfer suggestions</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-clock"></i></div>
+          <h3>Real-time Schedule</h3>
+          <p>Up-to-date train arrival and departure times</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-ticket-alt"></i></div>
+          <h3>Fare Calculator</h3>
+          <p>Calculate ticket prices based on journey distance and type</p>
+        </div>
+      </div>
+      
+      <div class="tech-stack">
+        <h3>Technology Stack</h3>
+        <div class="tech-badges">
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">React.js</span>
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">Google Maps API</span>
+          <span class="tech-badge">Firebase</span>
+        </div>
+      </div>
+      
+      <div class="learning-outcomes">
+        <h3>Learning Outcomes</h3>
+        <ul>
+          <li>Building modern, responsive user interfaces</li>
+          <li>Working with external APIs and real-time data</li>
+          <li>Implementing mapping and geolocation features</li>
+          <li>State management in complex applications</li>
+          <li>Deploying a full-stack application to production</li>
+          <li>Using AI tools to accelerate development</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="setup" class="section materials-section">
+    <h2>&lt;Environment Setup /&gt;</h2>
+    <div class="materials-content">
+      <p>Before our first session, please make sure you have the following software installed:</p>
+      
+      <div class="setup-instructions">
+        <div class="setup-item">
+          <h3><i class="fab fa-node-js"></i> Node.js</h3>
+          <p>Download and install the latest LTS version from <a href="https://nodejs.org/" target="_blank">nodejs.org</a></p>
+          <div class="code-block">
+            <pre><code class="language-bash"># Verify installation
+node --version
+npm --version</code></pre>
+          </div>
+        </div>
+        
+        <div class="setup-item">
+          <h3><i class="fas fa-code"></i> Cursor IDE</h3>
+          <p>Download and install Cursor from <a href="https://cursor.sh/" target="_blank">cursor.sh</a></p>
+          <ul>
+            <li>Launch Cursor after installation</li>
+            <li>Sign in with GitHub if prompted</li>
+            <li>Get familiar with the interface</li>
+          </ul>
+        </div>
+        
+        <div class="setup-item">
+          <h3><i class="fab fa-github"></i> Git & GitHub</h3>
+          <p>Create a GitHub account at <a href="https://github.com/" target="_blank">github.com</a></p>
+          <div class="code-block">
+            <pre><code class="language-bash"># Configure Git (replace with your details)
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"</code></pre>
+          </div>
+        </div>
+        
+        <div class="setup-item">
+          <h3><i class="fab fa-react"></i> Project Repository</h3>
+          <p>Clone our starter repository to get the project template</p>
+          <div class="code-block">
+            <pre><code class="language-bash"># Clone the repository
+git clone https://github.com/rootaccessdesign/mrt-bts-app.git
+cd mrt-bts-app
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start</code></pre>
+          </div>
+          <p><strong>Note:</strong> The repository link will be provided at the first session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="week1" class="section materials-section">
+    <h2>&lt;Week 1: UI Design /&gt;</h2>
+    <div class="materials-content">
+      <p>In our first week, we'll focus on designing and implementing the user interface for our MRT/BTS app.</p>
+      
+      <div class="week-content">
+        <h3>Session Overview</h3>
+        <ul>
+          <li>Introduction to React.js and component-based architecture</li>
+          <li>Setting up the project structure</li>
+          <li>Creating responsive layouts with CSS Grid and Flexbox</li>
+          <li>Building the main navigation and station selection components</li>
+          <li>Implementing dark mode and accessibility features</li>
+        </ul>
+        
+        <h3>Key Components We'll Build</h3>
+        <div class="components-preview">
+          <div class="component-card">
+            <h4>StationSelector</h4>
+            <p>Search and select from available stations</p>
+            <div class="component-image" style="background-color: #151515; height: 120px; display: flex; align-items: center; justify-content: center; color: #00ff99;">
+              [Station Selector UI]
+            </div>
+          </div>
+          
+          <div class="component-card">
+            <h4>RouteDisplay</h4>
+            <p>Shows the selected route with stations and transfers</p>
+            <div class="component-image" style="background-color: #151515; height: 120px; display: flex; align-items: center; justify-content: center; color: #00ff99;">
+              [Route Display UI]
+            </div>
+          </div>
+          
+          <div class="component-card">
+            <h4>TrainSchedule</h4>
+            <p>Displays upcoming train arrivals and departures</p>
+            <div class="component-image" style="background-color: #151515; height: 120px; display: flex; align-items: center; justify-content: center; color: #00ff99;">
+              [Train Schedule UI]
+            </div>
+          </div>
+        </div>
+        
+        <h3>Homework</h3>
+        <p>After the session, you'll be tasked with:</p>
+        <ul>
+          <li>Customizing the color scheme of your app</li>
+          <li>Adding at least one additional component</li>
+          <li>Implementing responsive design for mobile devices</li>
+          <li>Push your changes to GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources" class="section materials-section">
+    <h2>&lt;Resources /&gt;</h2>
+    <div class="materials-content">
+      <div class="resources-container">
+        <div class="resource-category">
+          <h3>Official Documentation</h3>
+          <ul class="resource-list">
+            <li><a href="https://reactjs.org/docs/getting-started.html" target="_blank">React.js Documentation</a></li>
+            <li><a href="https://nodejs.org/en/docs/" target="_blank">Node.js Documentation</a></li>
+            <li><a href="https://developers.google.com/maps/documentation" target="_blank">Google Maps API Documentation</a></li>
+            <li><a href="https://firebase.google.com/docs" target="_blank">Firebase Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-category">
+          <h3>Tutorials & Guides</h3>
+          <ul class="resource-list">
+            <li><a href="https://www.youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3" target="_blank">React.js Tutorial for Beginners (YouTube)</a></li>
+            <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Complete Guide to Flexbox</a></li>
+            <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">A Complete Guide to Grid</a></li>
+            <li><a href="https://github.com/tommyc12/chiang_mai_transit_guide" target="_blank">GitHub: Chiang Mai Transit Guide</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-category">
+          <h3>Data Sources</h3>
+          <ul class="resource-list">
+            <li><a href="https://bts.co.th/eng/" target="_blank">BTS Skytrain Official Website</a></li>
+            <li><a href="https://www.mrta.co.th/en/" target="_blank">MRT Official Website</a></li>
+            <li><a href="https://data.go.th/dataset/item_c7eb4f73-7a65-41a1-b3a7-4fe0d534a471" target="_blank">Thailand Open Data: Chiang Mai Public Transport</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-category">
+          <h3>Design Resources</h3>
+          <ul class="resource-list">
+            <li><a href="https://www.figma.com/" target="_blank">Figma (Free UI Design Tool)</a></li>
+            <li><a href="https://material.io/design" target="_blank">Material Design Guidelines</a></li>
+            <li><a href="https://fontawesome.com/" target="_blank">Font Awesome Icons</a></li>
+            <li><a href="https://coolors.co/" target="_blank">Coolors (Color Scheme Generator)</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="contact-instructor">
+        <h3>Need Help?</h3>
+        <p>If you're stuck or have questions before our next session, you can:</p>
+        <ul>
+          <li><i class="fab fa-discord"></i> Join our Discord server for community support: <a href="https://discord.gg/NY4XBS2vGa" target="_blank">discord.gg/NY4XBS2vGa</a></li>
+          <li><i class="fas fa-envelope"></i> Email the instructor at <a href="mailto:instructor@rootaccess.design">instructor@rootaccess.design</a></li>
+          <li><i class="fab fa-github"></i> Open an issue on the GitHub repository</li>
+        </ul>
+        <div class="discord-join">
+          <a href="https://discord.gg/NY4XBS2vGa" target="_blank" class="discord-join-button">
+            <i class="fab fa-discord"></i> Join Our Community
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>© 2023 Root Access Design. All rights reserved.</p>
+        <p>Join us every Friday for our free AI coding bootcamp.</p>
+        <p>Location: Supanich Condo, Chiang Mai</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      hljs.highlightAll();
+      
+      // Add custom styles for the materials page
+      const style = document.createElement('style');
+      style.innerHTML = `
+        /* Materials page styles */
+        .materials-hero {
+          min-height: 50vh;
+          padding-top: 100px;
+        }
+        
+        .materials-title {
+          font-size: 3.5rem;
+          color: #0ff;
+          margin: 0;
+          line-height: 1.2;
+          animation: glitch 2s infinite;
+        }
+        
+        .materials-subtitle {
+          font-size: 1.5rem;
+          color: #00ff99;
+          margin: 0.5rem 0 2rem;
+        }
+        
+        .materials-navigation {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+          margin: 2rem 0;
+        }
+        
+        .materials-nav-item {
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 4px;
+          padding: 0.6rem 1.2rem;
+          color: #0ff;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+        
+        .materials-nav-item:hover {
+          background: rgba(0, 255, 255, 0.1);
+          transform: translateY(-3px);
+          border-color: #00ff99;
+          color: #00ff99;
+        }
+        
+        .materials-section {
+          padding: 4rem 2rem;
+        }
+        
+        .materials-content {
+          max-width: 1000px;
+          margin: 0 auto;
+          color: #eee;
+        }
+        
+        .materials-content p {
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+        
+        .materials-content a {
+          color: #0ff;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border-bottom: 1px dotted rgba(0, 255, 255, 0.5);
+        }
+        
+        .materials-content a:hover {
+          color: #00ff99;
+          border-bottom-color: #00ff99;
+        }
+        
+        .materials-content h3 {
+          color: #00ff99;
+          margin: 2rem 0 1rem;
+        }
+        
+        .materials-content ul, .materials-content ol {
+          margin-bottom: 1.5rem;
+          padding-left: 1.5rem;
+        }
+        
+        .materials-content li {
+          margin-bottom: 0.5rem;
+        }
+        
+        .project-features {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+        }
+        
+        .feature-card {
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 8px;
+          padding: 1.5rem;
+          transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 255, 153, 0.1);
+          border-color: #00ff99;
+        }
+        
+        .feature-card .feature-icon {
+          color: #0ff;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+          color: #fff;
+          margin-top: 0;
+          margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+          color: #aaa;
+          margin-bottom: 0;
+          font-size: 0.9rem;
+        }
+        
+        .tech-stack {
+          margin: 2.5rem 0;
+        }
+        
+        .tech-badges {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          margin-top: 1rem;
+        }
+        
+        .tech-badge {
+          background: rgba(0, 255, 255, 0.1);
+          border: 1px solid rgba(0, 255, 255, 0.3);
+          border-radius: 20px;
+          padding: 0.4rem 1rem;
+          font-size: 0.9rem;
+          color: #0ff;
+        }
+        
+        .setup-instructions {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          margin: 2rem 0;
+        }
+        
+        .setup-item {
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 8px;
+          padding: 1.5rem;
+        }
+        
+        .setup-item h3 {
+          color: #0ff;
+          margin-top: 0;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .setup-item i {
+          font-size: 1.2rem;
+        }
+        
+        .code-block {
+          background: #1a1a1a;
+          border-radius: 4px;
+          margin: 1rem 0;
+          position: relative;
+        }
+        
+        .code-block pre {
+          margin: 0;
+          padding: 1rem;
+          overflow-x: auto;
+        }
+        
+        .components-preview {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+        }
+        
+        .component-card {
+          background: rgba(15, 15, 15, 0.6);
+          border: 1px solid rgba(0, 255, 255, 0.2);
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        
+        .component-card h4 {
+          color: #0ff;
+          margin: 0;
+          padding: 1rem;
+          background: rgba(0, 0, 0, 0.3);
+          border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .component-card p {
+          padding: 0 1rem;
+          font-size: 0.9rem;
+          color: #aaa;
+        }
+        
+        .component-image {
+          width: 100%;
+          border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .resources-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin: 2rem 0;
+        }
+        
+        .resource-category h3 {
+          margin-top: 0;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .resource-list {
+          list-style-type: none;
+          padding: 0;
+        }
+        
+        .resource-list li {
+          margin-bottom: 0.8rem;
+          padding-left: 1rem;
+          position: relative;
+        }
+        
+        .resource-list li::before {
+          content: '▹';
+          position: absolute;
+          left: 0;
+          color: #0ff;
+        }
+        
+        .contact-instructor {
+          background: rgba(0, 255, 153, 0.05);
+          border: 1px solid rgba(0, 255, 153, 0.2);
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-top: 3rem;
+        }
+        
+        .contact-instructor h3 {
+          color: #00ff99;
+          margin-top: 0;
+        }
+        
+        .contact-instructor ul {
+          list-style-type: none;
+          padding: 0;
+        }
+        
+        .contact-instructor li {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.8rem;
+        }
+        
+        .contact-instructor i {
+          color: #0ff;
+          width: 20px;
+          text-align: center;
+        }
+        
+        .discord-join {
+          margin-top: 1.5rem;
+          text-align: center;
+        }
+        
+        .discord-join-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          background: #5865F2;
+          color: #fff;
+          text-decoration: none;
+          font-weight: bold;
+          padding: 0.8rem 1.5rem;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4);
+        }
+        
+        .discord-join-button:hover {
+          background: #4752c4;
+          transform: translateY(-3px);
+          box-shadow: 0 7px 14px rgba(88, 101, 242, 0.6);
+          color: #fff;
+        }
+        
+        .discord-join-button i {
+          font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+          .materials-title {
+            font-size: 2.5rem;
+          }
+          
+          .materials-subtitle {
+            font-size: 1.2rem;
+          }
+          
+          .materials-navigation {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .materials-nav-item {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+          }
+          
+          .project-features, 
+          .components-preview,
+          .resources-container {
+            grid-template-columns: 1fr;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    });
+  </script>
+</body>
+</html> 
