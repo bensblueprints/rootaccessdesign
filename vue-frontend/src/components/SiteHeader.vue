@@ -8,7 +8,7 @@
         <router-link to="/#our-vibe">Our Vibe</router-link>
         <router-link to="/#team">Team</router-link>
         <router-link to="/#pricing-calculator">Pricing</router-link>
-        <!-- <div class="courses-menu-item">
+        <div class="courses-menu-item">
           <router-link to="/courses">Courses</router-link>
           <div class="mega-menu">
             <div class="mega-menu-column">
@@ -59,7 +59,7 @@
               </router-link>
             </div>
           </div>
-        </div> -->
+        </div> 
         <router-link to="/meet-up" class="highlight-nav">Free Coding Bootcamp</router-link>
       </nav>
     </div>
