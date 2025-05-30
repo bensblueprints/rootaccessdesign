@@ -25,39 +25,8 @@ const teamMembers = ref([
     name: 'Ben Boyce',
     title: 'Root Access Founder',
     imageUrl: '/ben.jpeg', // No image provided for Ben Boyce
-  },
-  {
-    id: 2,
-    name: 'Dimitri Surber',
-    title: 'Digital Alchemist, Consultant, Senior Engineer (BSc. Business IT)',
-    linkedinUrl: 'https://www.linkedin.com/in/dimitrisurber', // Placeholder, replace with actual URL
-    imageUrl: '/dimitri.jpeg',
-  },
-  {
-    id: 3,
-    name: 'Miriam Beck',
-    title: 'Digital Alchemist, UX Expert, Designer, Consultant',
-    linkedinUrl: 'https://www.linkedin.com/in/miriam-beck-83b37a203', // Placeholder, replace with actual URL
-    imageUrl: '/miriam.png',
-  },
-  {
-    id: 4,
-    name: 'Jimbo Ready',
-    title: 'AI expert, Senior Engineer',
-    imageUrl: '/jimbo.jpg',
-  },
-  {
-    id: 5,
-    name: 'Caitlynn Chaine',
-    title: 'Marketing Expert',
-    imageUrl: '/caitlynn.png',
-  },
-  {
-    id: 6,
-    name: 'Gunter Storm',
-    title: 'Photographer, Videographer',
-    imageUrl: '/storm.jpg',
-  },
+  }
+  
 ]);
 </script>
 
