@@ -284,8 +284,63 @@ export default {
       })
     },
     runDebugTests() {
-      // Implement the logic to run debug tests
-      console.log('Running debug tests...')
+      console.log('🔍 === MailerLite Debug Tests ===')
+      
+      // Test 1: Check if window.ml exists
+      console.log('1. window.ml exists:', typeof window.ml !== 'undefined')
+      console.log('   window.ml type:', typeof window.ml)
+      console.log('   window.ml object:', window.ml)
+      
+      // Test 2: Check MailerLite script in DOM
+      const mlScripts = document.querySelectorAll('script[src*="mailerlite"]')
+      console.log('2. MailerLite scripts in DOM:', mlScripts.length)
+      mlScripts.forEach((script, i) => {
+        console.log(`   Script ${i}:`, script.src)
+      })
+      
+      // Test 3: Check if ml function is callable
+      if (typeof window.ml === 'function') {
+        console.log('3. ml is callable: YES ✅')
+        
+        // Test 4: Try different ml calls
+        try {
+          console.log('4. Testing ml() calls...')
+          console.log('   ml() result:', window.ml())
+          console.log('   ml("version") result:', window.ml('version'))
+          console.log('   ml("account") result:', window.ml('account'))
+        } catch (error) {
+          console.error('   Error calling ml():', error)
+        }
+        
+        // Test 5: Try the actual form call
+        try {
+          console.log('5. Testing form call...')
+          const result = window.ml('show', this.funnelData.mailerLiteEmbedId, true)
+          console.log('   ml("show", "' + this.funnelData.mailerLiteEmbedId + '", true) result:', result)
+        } catch (error) {
+          console.error('   Error showing form:', error)
+        }
+        
+      } else {
+        console.log('3. ml is callable: NO ❌')
+        console.log('   This means MailerLite script is not properly loaded')
+      }
+      
+      // Test 6: Check network requests
+      console.log('6. Check Network tab for:')
+      console.log('   - https://assets.mailerlite.com/js/universal.js (should be 200)')
+      console.log('   - Any CORS or loading errors')
+      
+      // Test 7: Manual account check
+      console.log('7. Account ID configured: 1312118')
+      console.log('   Form ID configured:', this.funnelData.mailerLiteEmbedId)
+      
+      console.log('🔍 === End Debug Tests ===')
+      console.log('Next steps if ml is undefined:')
+      console.log('1. Check MailerLite account settings')
+      console.log('2. Verify form ID exists and is published')
+      console.log('3. Check if account ID 1312118 is correct')
+      console.log('4. Try creating a new form with different ID')
     }
   }
 }
