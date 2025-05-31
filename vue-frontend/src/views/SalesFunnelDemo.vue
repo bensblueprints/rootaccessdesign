@@ -1,5 +1,6 @@
 <template>
   <div class="sales-funnel-overview">
+    <NewsletterSection />
     <div class="container">
       <div class="header-section">
         <h1 class="main-title">Root Access Sales Funnels</h1>
@@ -100,8 +101,13 @@
 </template>
 
 <script>
+import NewsletterSection from '@/components/NewsletterSection.vue';
+
 export default {
   name: 'SalesFunnelDemo',
+  components: {
+    NewsletterSection,
+  },
   data() {
     return {
       salesFunnels: [],

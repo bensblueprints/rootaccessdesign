@@ -1,6 +1,7 @@
 <template>
   <div class="home-page">
     <HeroSection />
+    <NewsletterSection />
     <ProcessSection />
     <SoftwareSection />
     <OurVibeSection />
@@ -12,6 +13,7 @@
 
 <script setup>
 import HeroSection from '../components/HeroSection.vue';
+import NewsletterSection from '../components/NewsletterSection.vue';
 import ProcessSection from '../components/ProcessSection.vue';
 import SoftwareSection from '../components/SoftwareSection.vue';
 import OurVibeSection from '../components/OurVibeSection.vue';
