@@ -92,14 +92,6 @@
           <!-- Free Lead Magnet - MailerLite HTML Embed -->
           <div v-else-if="funnelData.mailerLiteEmbedId" class="mailerlite-html-form">
             <div v-html="mailerLiteFormHTML"></div>
-            
-            <!-- Info -->
-            <div class="mailerlite-info" style="background: rgba(0,150,255,0.1); padding: 1rem; margin-top: 1rem; border-radius: 4px;">
-              <p style="color: #60a5fa; margin: 0; font-size: 0.9rem;">
-                📧 <strong>Powered by MailerLite</strong> - Direct integration with embedded form
-              </p>
-              <p style="color: #ccc; margin: 0.5rem 0 0 0; font-size: 0.8rem;">Form ID: {{ funnelData.mailerLiteEmbedId }}</p>
-            </div>
           </div>
           
           <!-- Fallback for funnels without forms configured -->
