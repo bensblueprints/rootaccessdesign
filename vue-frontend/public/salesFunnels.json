@@ -189,6 +189,7 @@
       ],
       "socialProofTitle": "Hear From Freelancers Who Transformed Their Upwork Careers:",
       "backToHomeText": "Back to Home",
+      "mailerLiteEmbedId": "upwork-form",
       "bonuses": [
         {
           "title": "1-on-1 Profile Review",
@@ -397,6 +398,7 @@
       ],
       "socialProofTitle": "Thousands Are Building Empires With This Bundle!",
       "backToHomeText": "Back to Home",
+      "mailerLiteEmbedId": "digital-products-form",
       "downloadLinks": [
         {
           "title": "eBooks & PLR Articles",
@@ -574,10 +576,10 @@
       "primaryColor": "#00ff41",
       "title": "Cybersecurity Cheat Sheet 2025:",
       "subtitle": "Essential Security Tips for IT Professionals",
-      "description": "CYBERSECURITY CHEAT SHEET: Protect Your Digital Assets for Just $14",
+      "description": "CYBERSECURITY CHEAT SHEET: Protect Your Digital Assets for Just $18",
       "content": "Master the fundamentals of cybersecurity with our comprehensive cheat sheet. Learn essential security protocols, threat detection, incident response, and best practices to protect yourself and your organization from cyber threats in 2025. Professional-grade security knowledge for the price of a coffee.",
       "videoUrl": "https://example.com/cybersecurity-video.mp4",
-      "ctaText": "GET CYBERSECURITY CHEAT SHEET - $14",
+      "ctaText": "GET CYBERSECURITY CHEAT SHEET - $18",
       "stripeUrl": "https://buy.stripe.com/5kQ3cv8Pt3udcVJ3NucjS05",
       "formFields": [
         {
@@ -615,7 +617,7 @@
         },
         {
           "title": "Professional Grade",
-          "description": "Enterprise-level security knowledge for $14.",
+          "description": "Enterprise-level security knowledge for $18.",
           "icon": "professional"
         }
       ],
@@ -636,7 +638,7 @@
           "initials": "RW",
           "name": "Robert W.",
           "title": "IT Security Manager",
-          "quote": "This cheat sheet saved my career. The incident response protocols helped us contain a major breach within hours. Best $14 I've ever spent."
+          "quote": "This cheat sheet saved my career. The incident response protocols helped us contain a major breach within hours. Best $18 I've ever spent."
         },
         {
           "initials": "SH",
@@ -648,11 +650,12 @@
           "initials": "MK",
           "name": "Michael K.",
           "title": "Network Administrator",
-          "quote": "Finally, a comprehensive guide that's actually practical. My organization's security posture improved dramatically. Incredible value for $14."
+          "quote": "Finally, a comprehensive guide that's actually practical. My organization's security posture improved dramatically. Incredible value for $18."
         }
       ],
       "socialProofTitle": "Trusted by IT Professionals Worldwide...",
-      "backToHomeText": "Back to Home"
+      "backToHomeText": "Back to Home",
+      "mailerLiteEmbedId": "cybersecurity-form"
     },
     {
       "id": "ai-jobs-guide-2025",

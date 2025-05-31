@@ -25,8 +25,19 @@ const teamMembers = ref([
     name: 'Ben Boyce',
     title: 'Root Access Founder',
     imageUrl: '/ben.jpeg', // No image provided for Ben Boyce
+  },
+  {
+    id: 2,
+    name: 'Damn Dimsum',
+    title: 'Digital Alchemist, Consultant, Senior Engineer (BSc. Business IT)',
+    imageUrl: '/dimitri.jpeg',
+  },
+  {
+    id: 3,
+    name: 'Miu Miu',
+    title: 'Digital Alchemist, UX Expert, Designer, Consultant',
+    imageUrl: '/miriam.png',
   }
-  
 ]);
 </script>
 

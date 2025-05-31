@@ -70,27 +70,8 @@
 
         <!-- Lead Capture Form -->
         <div class="lead-form">
-          <!-- Paid Product Form - Custom form that redirects to Stripe -->
-          <form v-if="funnelData.stripeUrl" @submit.prevent="submitForm">
-            <div class="form-fields">
-              <input 
-                v-for="field in funnelData.formFields" 
-                :key="field.name"
-                :type="field.type"
-                :placeholder="field.placeholder"
-                :required="field.required"
-                v-model="formData[field.name]"
-                class="form-input"
-              />
-            </div>
-            <button type="submit" class="cta-button" :disabled="isSubmitting">
-              <span v-if="isSubmitting">Submitting...</span>
-              <span v-else>{{ funnelData.ctaText }}</span>
-            </button>
-          </form>
-          
-          <!-- Free Lead Magnet - MailerLite HTML Embed -->
-          <div v-else-if="funnelData.mailerLiteEmbedId" class="mailerlite-html-form">
+          <!-- MailerLite Form - Now used for both paid and free products -->
+          <div v-if="funnelData.mailerLiteEmbedId" class="mailerlite-html-form">
             <div v-html="mailerLiteFormHTML"></div>
           </div>
           
@@ -158,7 +139,8 @@ export default {
     return {
       funnelData: null,
       formData: {},
-      isSubmitting: false
+      isSubmitting: false,
+      capturedEmail: null
     }
   },
   computed: {
@@ -225,11 +207,35 @@ export default {
           primaryColor: '#f7652f', // AI orange
           primaryColorHover: '#ae4b26',
           buttonTextColor: '#FFFFFF'
+        },
+        'upwork-proposal-mastery': {
+          formId: '26664813',
+          actionId: '155923057676911939',
+          primaryColor: '#14A800', // Upwork green
+          primaryColorHover: '#0c9d00',
+          buttonTextColor: '#FFFFFF'
+        },
+        'digital-products-empire-27': {
+          formId: '26665382',
+          actionId: '155924399209317923',
+          primaryColor: '#A855F7', // Purple
+          primaryColorHover: '#9333ea',
+          buttonTextColor: '#FFFFFF'
+        },
+        'cybersecurity-cheat-sheet': {
+          formId: '26665504',
+          actionId: '155924794322192107',
+          primaryColor: '#00ff41', // Green
+          primaryColorHover: '#00cc34',
+          buttonTextColor: '#000000'
         }
       }
       
       const config = mailerLiteConfigs[this.funnelId] || mailerLiteConfigs['reddit-ranking-2025']
       const buttonText = this.funnelData.ctaText || 'GET FREE GUIDE'
+      
+      // Check if this is a paid product (has stripeUrl)
+      const isPaidProduct = !!this.funnelData.stripeUrl
       
       return `
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1748530");</style>
@@ -385,11 +391,12 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
       <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
         <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1312118/forms/${config.actionId}/subscribe" data-code="" method="post" target="_blank">
           <div class="ml-form-formContent">
+            ${!isPaidProduct ? `
             <div class="ml-form-fieldRow">
               <div class="ml-field-group ml-field-name">
                 <input aria-label="name" type="text" class="form-control" name="fields[name]" placeholder="Name" autocomplete="given-name">
               </div>
-            </div>
+            </div>` : ''}
             <div class="ml-form-fieldRow ml-last-item">
               <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
                 <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Email" autocomplete="email">
@@ -444,7 +451,7 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
         const data = await response.json()
         this.funnelData = data.salesFunnels.find(funnel => funnel.id === this.funnelId)
         
-        // Initialize form data
+        // Initialize form data - no longer needed but keeping for compatibility
         if (this.funnelData && this.funnelData.formFields) {
           this.formData = {}
           this.funnelData.formFields.forEach(field => {
@@ -453,45 +460,6 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
         }
       } catch (error) {
         console.error('Error loading funnel data:', error)
-      }
-    },
-    async submitForm() {
-      if (this.isSubmitting) return // Prevent double submission
-      
-      this.isSubmitting = true
-      
-      try {
-        // This method is now only for paid products with Stripe URLs
-        if (this.funnelData.stripeUrl) {
-          this.handleStripeCheckout()
-        } else {
-          // This shouldn't happen with the new template logic, but just in case
-          console.warn('submitForm called for non-Stripe funnel')
-          this.goToThankYou()
-        }
-      } catch (error) {
-        console.error('Form submission error:', error)
-        alert('There was an error submitting the form. Please try again.')
-      } finally {
-        this.isSubmitting = false
-      }
-    },
-    handleStripeCheckout() {
-      // Use the stripeUrl from the JSON configuration
-      const stripeUrl = this.funnelData.stripeUrl
-      
-      if (stripeUrl) {
-        // Create URL with prefilled email and client reference ID
-        const params = new URLSearchParams({
-          prefilled_email: this.formData.email,
-          client_reference_id: this.funnelId
-        })
-        
-        // Redirect to Stripe with prefilled data
-        window.location.href = `${stripeUrl}?${params.toString()}`
-      } else {
-        console.error('No Stripe URL configured for this funnel')
-        alert('Payment processing unavailable. Please try again later.')
       }
     },
     goToThankYou() {
@@ -513,17 +481,23 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
         },
         'instagram-growth-masterclass': {
           formId: '26660413',
-          actionId: '155910259277301277',
-          primaryColor: '#e1306c', // Instagram pink
-          primaryColorHover: '#c4295a',
-          buttonTextColor: '#ffffff'
+          actionId: '155910259277301277'
         },
         'ai-jobs-guide-2025': {
           formId: '26660497',
-          actionId: '155910495951390569',
-          primaryColor: '#f7652f', // AI orange
-          primaryColorHover: '#ae4b26',
-          buttonTextColor: '#FFFFFF'
+          actionId: '155910495951390569'
+        },
+        'upwork-proposal-mastery': {
+          formId: '26664813',
+          actionId: '155923057676911939'
+        },
+        'digital-products-empire-27': {
+          formId: '26665382',
+          actionId: '155924399209317923'
+        },
+        'cybersecurity-cheat-sheet': {
+          formId: '26665504',
+          actionId: '155924794322192107'
         }
       }
       
@@ -532,16 +506,23 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
       // Define the success callback function globally with dynamic form ID
       const callbackFunctionName = `ml_webform_success_${config.formId}`
       window[callbackFunctionName] = () => {
+        console.log('MailerLite success callback triggered for:', this.funnelId)
+        
         const $ = window.ml_jQuery || window.jQuery;
         if ($) {
           $(`.ml-subscribe-form-${config.formId} .row-success`).show();
           $(`.ml-subscribe-form-${config.formId} .row-form`).hide();
         }
         
-        // Redirect to thank you page after showing success
-        setTimeout(() => {
-          this.goToThankYou()
-        }, 3000);
+        // Check if this is a free product (no stripeUrl)
+        if (!this.funnelData.stripeUrl) {
+          console.log('Redirecting to thank you page in 3 seconds...')
+          // For free products: redirect to thank you page
+          setTimeout(() => {
+            this.goToThankYou()
+          }, 3000);
+        }
+        // Note: For paid products, Stripe already opened in new tab on form submission
       }
       
       // Load MailerLite webforms script
@@ -557,6 +538,82 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
       if (!document.querySelector(`script[src*="${config.actionId}"]`)) {
         fetch(trackingUrl)
           .catch(error => console.log('MailerLite tracking load error:', error));
+      }
+      
+      // Add form submission listener for paid products
+      if (this.funnelData.stripeUrl) {
+        this.$nextTick(() => {
+          const form = document.querySelector(`#mlb2-${config.formId} form`)
+          if (form) {
+            form.addEventListener('submit', (e) => {
+              console.log('Form submission intercepted for paid product')
+              
+              // Capture email immediately
+              const emailInput = form.querySelector('input[name="fields[email]"]')
+              const emailValue = emailInput ? emailInput.value : null
+              console.log('Captured email on submit:', emailValue)
+              
+              // Open Stripe in new tab immediately
+              if (emailValue) {
+                this.openStripeInNewTab(emailValue)
+              }
+              
+              // Let MailerLite form continue to submit normally
+              // (don't prevent default - let it go to MailerLite)
+            })
+          }
+        })
+      }
+    },
+    openStripeInNewTab(email) {
+      console.log('Opening Stripe in new tab with email:', email)
+      const stripeUrl = this.funnelData.stripeUrl
+      
+      if (stripeUrl) {
+        const params = new URLSearchParams({
+          client_reference_id: this.funnelId
+        })
+        
+        if (email) {
+          params.append('prefilled_email', email)
+        }
+        
+        const finalUrl = `${stripeUrl}?${params.toString()}`
+        console.log('Opening new tab with:', finalUrl)
+        
+        // Open Stripe in new tab
+        window.open(finalUrl, '_blank')
+      } else {
+        console.error('No Stripe URL configured for this funnel')
+      }
+    },
+    handleStripeCheckout() {
+      console.log('handleStripeCheckout called')
+      console.log('Captured email:', this.capturedEmail)
+      // Use the stripeUrl from the JSON configuration
+      const stripeUrl = this.funnelData.stripeUrl
+      console.log('StripeUrl:', stripeUrl)
+      
+      if (stripeUrl) {
+        // For MailerLite integration, we capture the email from the form
+        // and pass both email and client reference ID to Stripe
+        const params = new URLSearchParams({
+          client_reference_id: this.funnelId
+        })
+        
+        // Add email if we captured it
+        if (this.capturedEmail) {
+          params.append('prefilled_email', this.capturedEmail)
+        }
+        
+        const finalUrl = `${stripeUrl}?${params.toString()}`
+        console.log('Redirecting to:', finalUrl)
+        
+        // Redirect to Stripe with email and client reference ID
+        window.location.href = finalUrl
+      } else {
+        console.error('No Stripe URL configured for this funnel')
+        alert('Payment processing unavailable. Please try again later.')
       }
     }
   }
