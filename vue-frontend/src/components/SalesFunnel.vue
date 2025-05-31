@@ -543,24 +543,31 @@ animation: ml-form-embedSubmitLoad 1.2s linear infinite;
       // Add form submission listener for paid products
       if (this.funnelData.stripeUrl) {
         this.$nextTick(() => {
-          const form = document.querySelector(`#mlb2-${config.formId} form`)
-          if (form) {
-            form.addEventListener('submit', (e) => {
-              console.log('Form submission intercepted for paid product')
+          const submitButton = document.querySelector(`#mlb2-${config.formId} button[type="submit"]`)
+          if (submitButton) {
+            submitButton.addEventListener('click', (e) => {
+              console.log('Submit button clicked for paid product')
               
-              // Capture email immediately
-              const emailInput = form.querySelector('input[name="fields[email]"]')
+              // Get the form to validate and capture email
+              const form = document.querySelector(`#mlb2-${config.formId} form`)
+              const emailInput = form ? form.querySelector('input[name="fields[email]"]') : null
               const emailValue = emailInput ? emailInput.value : null
-              console.log('Captured email on submit:', emailValue)
               
-              // Open Stripe in new tab immediately
-              if (emailValue) {
-                this.openStripeInNewTab(emailValue)
+              console.log('Captured email on button click:', emailValue)
+              
+              // Only open Stripe if email is provided and valid
+              if (emailValue && emailValue.includes('@')) {
+                // Small delay to let MailerLite validation pass, then open Stripe
+                setTimeout(() => {
+                  this.openStripeInNewTab(emailValue)
+                }, 100)
               }
               
-              // Let MailerLite form continue to submit normally
-              // (don't prevent default - let it go to MailerLite)
+              // Let the button click and form submission continue normally
+              // (don't prevent default - let MailerLite handle the form)
             })
+          } else {
+            console.log('Submit button not found for form:', config.formId)
           }
         })
       }
