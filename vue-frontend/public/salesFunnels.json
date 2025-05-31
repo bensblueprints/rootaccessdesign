@@ -308,7 +308,8 @@
         }
       ],
       "socialProofTitle": "See How Others Launched Their Brands...",
-      "backToHomeText": "Back to Home"
+      "backToHomeText": "Back to Home",
+      "mailerLiteEmbedId": "supplement-form"
     },
     {
       "id": "digital-products-empire-27",
@@ -548,6 +549,7 @@
       ],
       "socialProofTitle": "Real People, Real Results...",
       "backToHomeText": "Back to Home",
+      "mailerLiteEmbedId": "instagram-form",
       "nextSteps": [
         {
           "title": "Check Your Email",
@@ -734,7 +736,8 @@
         }
       ],
       "socialProofTitle": "Join Thousands Who've Accelerated Their AI Careers...",
-      "backToHomeText": "Back to Home"
+      "backToHomeText": "Back to Home",
+      "mailerLiteEmbedId": "ai-form"
     }
   ]
 } 

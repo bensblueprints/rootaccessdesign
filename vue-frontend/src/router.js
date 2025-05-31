@@ -53,6 +53,11 @@ const routes = [
     name: 'ThankYou',
     component: () => import(/* webpackChunkName: "thankyou" */ '@/views/ThankYou.vue'), // Lazy load
   },
+  {
+    path: '/admin/emails',
+    name: 'AdminEmails',
+    component: () => import(/* webpackChunkName: "adminemails" */ '@/components/AdminEmails.vue'), // Lazy load
+  },
   // Add more routes as needed
 ];
 
