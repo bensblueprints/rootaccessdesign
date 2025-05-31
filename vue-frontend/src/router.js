@@ -38,6 +38,21 @@ const routes = [
     // component: TestWebhook,
     component: () => import(/* webpackChunkName: "testwebhook" */ '@/views/TestWebhook.vue'), // Lazy load
   },
+  {
+    path: '/funnels',
+    name: 'SalesFunnelDemo',
+    component: () => import(/* webpackChunkName: "salesfunneldemo" */ '@/views/SalesFunnelDemo.vue'), // Lazy load
+  },
+  {
+    path: '/funnel/:funnelId',
+    name: 'SalesFunnel',
+    component: () => import(/* webpackChunkName: "salesfunnel" */ '@/views/SalesFunnelView.vue'), // Lazy load
+  },
+  {
+    path: '/thank-you',
+    name: 'ThankYou',
+    component: () => import(/* webpackChunkName: "thankyou" */ '@/views/ThankYou.vue'), // Lazy load
+  },
   // Add more routes as needed
 ];
 
