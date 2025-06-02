@@ -51,8 +51,8 @@
             </div>
           </div>
           <div class="card-content">
-            <h3 class="card-title">Newsletter Growth System</h3>
-            <p class="card-description">Build and monetize your newsletter with proven strategies and automation.</p>
+            <h3 class="card-title">Instant Email List</h3>
+            <p class="card-description">Build a huge email, and subscriber list by giving awway a free digital or physical product</p>
             <button class="card-button disabled" disabled>
               Coming Soon
             </button>
